@@ -1,4 +1,5 @@
 <!-- app/View/Users/edit.ctp -->
+<?php $this->assign('title', 'Edit User'); ?>
 <div class="users form">
 <?php echo $this->Form->create('User'); ?>
     <fieldset>
