@@ -22,7 +22,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php //echo $cakeDescription ?>:
+		<?php //echo $cakeDescription ?>
 		<?php echo $this->fetch('title'); ?>
 	</title>
 	<?php
@@ -37,9 +37,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 </head>
 <body>
 	<div id="container">
+		<!--
 		<div id="header">
 			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
 		</div>
+		-->
 		<div id="content">
 
 			<?php echo $this->Session->flash(); ?>
