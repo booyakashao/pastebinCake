@@ -25,7 +25,7 @@
 <?php
 	echo $this->Html->link("Back to all Pastebins",  array('controller' => 'pastebinentries', 'action' => 'index'));	
 ?>
-
+<?php $this->start('script'); ?>
 <script>	
 $(document).keydown(function(e){
       switch(e.keyCode) {
@@ -51,6 +51,8 @@ $(document).keydown(function(e){
     	}
 });
 </script>
+<?php $this->end(); ?>
+
 <div style="width:100%;height:40px;">
 <table>
 	<tr>
