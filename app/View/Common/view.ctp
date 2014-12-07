@@ -1,5 +1,5 @@
 <h1><?php echo $this->fetch('title'); ?></h1>
-<?php echo $this->fetch('content');
+<?php echo $this->fetch('content'); ?>
 
 <div class="actions">
 	<h3>Related actions</h3>
