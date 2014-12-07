@@ -1,16 +1,15 @@
 <!-- File :/app/View/Pastebinentries/view.ctp -->
 
-<head>
 	<?php $this->start('script');?>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<?php $this->end(); ?>
-</head> 
 
 <h3>Pastebin Detailed Entry </h3>
 
 <!--Google Ad sense -->
-
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<?php $this->append('script');?>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<?php $this->end(); ?>
 <!-- First Ad -->
 <ins class="adsbygoogle"
      style="display:inline-block;width:728px;height:90px"
