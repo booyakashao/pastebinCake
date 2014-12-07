@@ -5,7 +5,7 @@ $this->extend('/Common/view');
 
 $this->assign('title', 'TITLE HERE');
 
-$this->start('sidebar');
+//$this->start('sidebar');
 ?>
 
 <h1>Blog posts</h1>
