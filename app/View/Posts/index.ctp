@@ -56,3 +56,15 @@ Item 5
 Item 6
 </li>
 <?php $this->end(); ?>
+
+<?php $this->prepend('sidebar'); ?>
+<li>
+Item -3
+</li>
+<li>
+Item -2
+</li>
+<li>
+Item -1
+</li>
+<?php $this->end(); ?>
