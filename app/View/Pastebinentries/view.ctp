@@ -15,18 +15,14 @@
      style="display:inline-block;width:728px;height:90px"
      data-ad-client="ca-pub-9653430912934834"
      data-ad-slot="6262524027"></ins>
+<?php $this->append('script');?>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
+<?php $this->end(); ?>
+<!-- First Ad End-->
 
-<br/>
-
-<!--################# -->
-
-<?php
-	echo $this->Html->link("Back to all Pastebins",  array('controller' => 'pastebinentries', 'action' => 'index'));	
-?>
-
+<?php $this->append('script');?>
 <script>
 $(document).keydown(function(e){
       switch(e.keyCode) {
@@ -52,6 +48,16 @@ $(document).keydown(function(e){
     	}
 });
 </script>
+<?php $this->end(); ?>
+<br/>
+
+<!--################# -->
+
+<?php
+	echo $this->Html->link("Back to all Pastebins",  array('controller' => 'pastebinentries', 'action' => 'index'));	
+?>
+
+
 
 
 <div style="width:100%;height:40px;">
