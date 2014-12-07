@@ -1,7 +1,9 @@
 <!-- File :/app/View/Pastebinentries/view.ctp -->
 
 <head>
+	<?php $this->start('script');?>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<?php $this->end(); ?>
 </head> 
 
 <h3>Pastebin Detailed Entry </h3>
@@ -24,10 +26,6 @@
 
 <?php
 	echo $this->Html->link("Back to all Pastebins",  array('controller' => 'pastebinentries', 'action' => 'index'));	
-?>
-
-<?php
-$this->assign('script', 'This is where the script goes');
 ?>
 
 <script>
