@@ -43,3 +43,16 @@ Item 3
     <?php //endforeach; ?>
     <?php //unset($post); ?>
 </table>
+
+
+<?php $this->append('sidebar'); ?>
+<li>
+Item 4
+</li>
+<li>
+Item 5
+</li>
+<li>
+Item 6
+</li>
+<?php $this->end(); ?>
