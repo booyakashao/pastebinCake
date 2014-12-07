@@ -25,8 +25,9 @@
 <?php
 	echo $this->Html->link("Back to all Pastebins",  array('controller' => 'pastebinentries', 'action' => 'index'));	
 ?>
-<?php $this->start('script'); ?>
-<script>	
+
+<script>
+<?php $this->start('script'); ?>	
 $(document).keydown(function(e){
       switch(e.keyCode) {
       	case 37 : 
@@ -50,8 +51,9 @@ $(document).keydown(function(e){
 	break;
     	}
 });
-</script>
 <?php $this->end(); ?>
+</script>
+
 
 <div style="width:100%;height:40px;">
 <table>
