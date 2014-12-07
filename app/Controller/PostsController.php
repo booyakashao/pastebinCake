@@ -4,7 +4,10 @@ class PostsController extends AppController {
 	public $helpers = array('Html', 'Form');
 
 	public function index() {
-		//$this->set('posts', $this->Post->find('all'));
+		/*This is removed because the database does not have posts table
+		
+		$this->set('posts', $this->Post->find('all'));
+		*/
 	}
 
 	public function view($id = null) {

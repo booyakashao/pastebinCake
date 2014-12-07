@@ -5,8 +5,21 @@ $this->extend('/Common/view');
 
 $this->assign('title', 'TITLE HERE');
 
-//$this->start('sidebar');
 ?>
+
+
+<?php $this->start('sidebar');?>
+<li>
+Item 1
+</li>
+<li>
+Item 2
+</li>
+<li>
+Item 3
+</li>
+<?php $this->end(); ?>
+
 
 <h1>Blog posts</h1>
 <table>
