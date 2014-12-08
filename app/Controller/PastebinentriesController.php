@@ -19,7 +19,7 @@ class PastebinentriesController extends AppController {
 	}
 
 	public function search() {
-		$this->set('title', 'Pastebin Search');
+		$this->set('title_for_layout', 'Pastebin Search');
 		if ($this->request->is('post')) {
 			$searchTerms = explode(',', $this->request->data['Pastebinentry']['searchTerm']);
 			
