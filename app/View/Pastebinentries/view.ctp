@@ -1,7 +1,5 @@
 <!-- File :/app/View/Pastebinentries/view.ctp -->
 
-	<?php $this->assign('title', 'View number '.$pastebinPrev['Pastebinentry']['id'])?>
-
 	<?php $this->start('script');?>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<?php $this->end(); ?>

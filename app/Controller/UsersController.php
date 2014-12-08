@@ -10,19 +10,21 @@ class UsersController extends AppController {
     }
 
     public function login() {
-	if ($this->request->is('post')) {
-		if ($this->Auth->login()) {
-			return $this->redirect($this->Auth->redirect(array('controller' => 'pastebinentries', 'action' => 'index')));
+		$this->assign('title', 'Login Page');
+		if ($this->request->is('post')) {
+			if ($this->Auth->login()) {
+				return $this->redirect($this->Auth->redirect(array('controller' => 'pastebinentries', 'action' => 'index')));
+			}
+			$this->Session->setFlash(__('Invalid username or password, try again'));
 		}
-		$this->Session->setFlash(__('Invalid username or password, try again'));
-	}
     }
 
     public function logout() {
-	return $this->redirect($this->Auth->logout());
+		return $this->redirect($this->Auth->logout());
     }
 
     public function index() {
+		$this->assign('title', 'Index Users');
         $this->User->recursive = 0;
         $this->set('users', $this->paginate());
     }
@@ -36,6 +38,7 @@ class UsersController extends AppController {
     }
 
     public function add() {
+		$this->assign('title', 'Add User');
         if ($this->request->is('post')) {
             $this->User->create();
             if ($this->User->save($this->request->data)) {
@@ -49,6 +52,7 @@ class UsersController extends AppController {
     }
 
     public function edit($id = null) {
+		$this->assign('title', 'Edit User');
         $this->User->id = $id;
         if (!$this->User->exists()) {
             throw new NotFoundException(__('Invalid user'));

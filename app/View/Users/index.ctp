@@ -1,5 +1,4 @@
 <!-- app/View/Users/index.ctp -->
-<?php $this->assign('title', 'Index Users'); ?>
 <h1>List of active users</h1>
 
 <?php

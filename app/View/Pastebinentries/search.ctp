@@ -1,5 +1,3 @@
-<?php $this->assign('title', 'Pastebin Search'); ?>
-
 <?php
 $paginator = $this->Paginator;
 ?>

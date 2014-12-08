@@ -10,6 +10,7 @@ class PastebinentriesController extends AppController {
 	);
 
 	public function index() {
+		$this->assign('title', 'Pastebin Entries');
 		$this->Paginator->settings = $this->paginate;
 		$pastebinEntries = $this->Paginator->paginate('Pastebinentry');
 
@@ -18,6 +19,7 @@ class PastebinentriesController extends AppController {
 	}
 
 	public function search() {
+		$this->assign('title', 'Pastebin Search');
 		if ($this->request->is('post')) {
 			$searchTerms = explode(',', $this->request->data['Pastebinentry']['searchTerm']);
 			
@@ -47,6 +49,7 @@ class PastebinentriesController extends AppController {
 	}
 
 	public function view($id = null) {
+		$this->assign('title', 'View number '. $id);
 		if (!$id) {
             		throw new NotFoundException(__('Invalid pastebin_id'));
         	}

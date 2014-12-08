@@ -1,7 +1,4 @@
 <!-- File: /app/View/PasteBinEntries/index.ctp -->
-<?php $this->assign('title', 'Pastebin Entries'); ?>
-
-
 <?php
 $paginator = $this->Paginator;
 ?>

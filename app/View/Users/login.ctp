@@ -1,5 +1,4 @@
-<?php $this->assign('title', 'Login Page'); ?>
-<div class="users form">
+\<div class="users form">
 <?php echo $this->Session->flash('auth'); ?>
 <?php echo $this->Form->create('User'); ?>
     <fieldset>
