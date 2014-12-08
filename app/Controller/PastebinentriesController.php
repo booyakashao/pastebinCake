@@ -17,7 +17,7 @@ class PastebinentriesController extends AppController {
 		$this->set('userRole', $this->Auth->user('role'));
 		$this->set('pasteBinEntries', $pastebinEntries);
 		
-		Controller::flash('You\'re in index page');
+		SessionComponent::setFlash(Test index flash);
 	}
 
 	public function search() {
