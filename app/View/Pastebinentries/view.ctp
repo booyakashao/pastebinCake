@@ -6,22 +6,6 @@
 
 <h3>Pastebin Detailed Entry </h3>
 
-<!--Google Ad sense -->
-	<?php $this->append('script');?>
-	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-	<?php $this->end(); ?>
-<!-- First Ad -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:728px;height:90px"
-     data-ad-client="ca-pub-9653430912934834"
-     data-ad-slot="6262524027"></ins>
-<?php $this->append('script');?>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-<?php $this->end(); ?>
-<!-- First Ad End-->
-
 <?php $this->append('script');?>
 <script>
 $(document).keydown(function(e){

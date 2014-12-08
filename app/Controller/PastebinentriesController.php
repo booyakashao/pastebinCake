@@ -17,7 +17,7 @@ class PastebinentriesController extends AppController {
 		$this->set('userRole', $this->Auth->user('role'));
 		$this->set('pasteBinEntries', $pastebinEntries);
 		
-		$this->Session->setFlash('Test index flash');
+		//$this->Session->setFlash('Test index flash');
 	}
 
 	public function search() {

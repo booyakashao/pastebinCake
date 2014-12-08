@@ -25,6 +25,19 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		<?php //echo $cakeDescription ?>
 		<?php echo $this->fetch('title'); ?>
 	</title>
+	
+	<!--Google Ad sense -->
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- First Ad -->
+	<ins class="adsbygoogle"
+		style="display:inline-block;width:728px;height:90px"
+		data-ad-client="ca-pub-9653430912934834"
+		data-ad-slot="6262524027"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+	<!--################# -->
+	
 	<?php
 		echo $this->Html->meta('icon');
 
