@@ -10,7 +10,7 @@ class PastebinentriesController extends AppController {
 	);
 
 	public function index() {
-		$this->set('title', 'Pastebin Entries');
+		$this->set('title_for_layout', 'Pastebin Entries');
 		$this->Paginator->settings = $this->paginate;
 		$pastebinEntries = $this->Paginator->paginate('Pastebinentry');
 
@@ -49,7 +49,7 @@ class PastebinentriesController extends AppController {
 	}
 
 	public function view($id = null) {
-		$this->set('title', 'View number '. $id);
+		$this->set('title_for_layout', 'View number '. $id);
 		if (!$id) {
             		throw new NotFoundException(__('Invalid pastebin_id'));
         	}
