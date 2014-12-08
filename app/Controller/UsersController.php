@@ -24,7 +24,7 @@ class UsersController extends AppController {
     }
 
     public function index() {
-		$this->assign('title', 'Index Users');
+		$this->set('title', 'Index Users');
         $this->User->recursive = 0;
         $this->set('users', $this->paginate());
     }
@@ -38,7 +38,7 @@ class UsersController extends AppController {
     }
 
     public function add() {
-		$this->assign('title', 'Add User');
+		$this->set('title', 'Add User');
         if ($this->request->is('post')) {
             $this->User->create();
             if ($this->User->save($this->request->data)) {
@@ -52,7 +52,7 @@ class UsersController extends AppController {
     }
 
     public function edit($id = null) {
-		$this->assign('title', 'Edit User');
+		$this->set('title', 'Edit User');
         $this->User->id = $id;
         if (!$this->User->exists()) {
             throw new NotFoundException(__('Invalid user'));
