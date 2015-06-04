@@ -14,13 +14,13 @@ echo $this->Form->End('Search');
     $searchTermArrayString = "";
 
     if(isset($searchTermsPropogated)) {
-       var_dump($searchTermsPropogated);
-       
        foreach ($searchTermsPropogated as $searchEntry):
            $searchTermArrayString += $searchEntry + ",";
        endforeach;
        unset($searchEntry);
     } 
+    
+    echo $searchTermArrayString;
 ?>
 
 <table>
