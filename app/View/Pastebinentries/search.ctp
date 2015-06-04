@@ -15,7 +15,7 @@ echo $this->Form->End('Search');
 
     if(isset($searchTermsPropogated)) {
        foreach ($searchTermsPropogated as $searchEntry):
-           $searchTermArrayString = $searchTermArrayString . $searchEntry . ",";
+           $searchTermArrayString .= $searchEntry . ",";
        endforeach;
        unset($searchEntry);
     } 
