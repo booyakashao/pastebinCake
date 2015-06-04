@@ -9,18 +9,6 @@ echo $this->Form->create(null, array('action' => 'search', 'type' => 'post'));
 echo $this->Form->input('searchTerm', array('placeholder' => 'Search should be comma delimited', 'label' => 'Search Term'));
 echo $this->Form->End('Search');
 ?>
-<?php 
-
-    $searchTermArrayString = "?searchTerm=";
-
-    if(isset($searchTermsPropogated)) {
-       foreach ($searchTermsPropogated as $searchEntry):
-           $searchTermArrayString .= $searchEntry . ",";
-       endforeach;
-       unset($searchEntry);
-    } 
-    
-?>
 
 <table>
 	<tr>
@@ -49,7 +37,6 @@ echo $this->Form->End('Search');
 <!-- Pagination section -->
 <div class='paging'>
 <?php
-        var_dump($paginator->first("First"));
 
 	echo $paginator->first("First");
 
