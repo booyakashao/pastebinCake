@@ -23,7 +23,6 @@ class PastebinentriesController extends AppController {
 	public function search() {
 		$this->set('title_for_layout', 'Pastebin Search');
 		if ($this->request->is('post')) {
-                        $searchTermsRaw = $this->request->data['Pastebinentry']['searchTerm'];
 			$searchTerms = explode(',', $this->request->data['Pastebinentry']['searchTerm']);
 			
 			$searchTermArray = array('OR' => array());
@@ -43,7 +42,7 @@ class PastebinentriesController extends AppController {
 			$pastebinEntries = $this->Paginator->paginate('Pastebinentry');
 
 			$this->set('pasteBinEntries', $pastebinEntries);
-                        $this->set('searchTermsPropogated', $searchTermsRaw);
+                        $this->set('searchTermsPropogated', $searchTermArray);
 		} else {
 			$this->Paginator->settings = $this->paginate;
 			$pastebinEntries = $this->Paginator->paginate('Pastebinentry');

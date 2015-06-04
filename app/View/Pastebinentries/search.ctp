@@ -10,7 +10,7 @@ echo $this->Form->input('searchTerm', array('placeholder' => 'Search should be c
 echo $this->Form->End('Search');
 ?>
 <?php if(isset($searchTermsPropogated)) {
-            echo "Search Term: " + $searchTermsPropogated;
+            var_dump($searchTermsPropogated);
         } else {
             echo "Search Term not set";
         }
