@@ -20,7 +20,7 @@ echo $this->Form->End('Search');
        unset($searchEntry);
     } 
     
-    echo $searchTermArrayString;
+    var_dump($searchTermArrayString);
 ?>
 
 <table>
