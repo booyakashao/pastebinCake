@@ -33,7 +33,7 @@ echo $this->Form->End('Search');
 	<?php endforeach ?>
 	<?php unset($entry)?>
         <?php if(isset($searchTermsPropogated)) {
-            echo "Search Term: " + $searchTermsPropogated;
+            echo "Search Term: " + $searchTermsPropogated[0];
         }?>
 </table>
 
