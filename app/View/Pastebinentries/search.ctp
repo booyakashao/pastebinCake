@@ -11,7 +11,10 @@ echo $this->Form->End('Search');
 ?>
 <?php if(isset($searchTermsPropogated)) {
             echo "Search Term: " + $searchTermsPropogated;
-        }?>
+        } else {
+            echo "Search Term not set";
+        }
+?>
 
 <table>
 	<tr>
