@@ -26,9 +26,11 @@ class PastebinentriesController extends AppController {
 			$searchTerms = explode(',', $this->request->data['Pastebinentry']['searchTerm']);
 			
 			$searchTermArray = array('OR' => array());
+                        $searchTermPropogateArray = array('&' => array());
 
 			foreach($searchTerms as $searchTerm) {
 				$searchTermArray['OR'][] = array('Pastebinentry.CONTENT LIKE' => "%$searchTerm%");
+                                $searchTermPropogateArray['&'][] = array($searchTerm);
 			}
 
 			$paginateSettings = array(
@@ -42,7 +44,7 @@ class PastebinentriesController extends AppController {
 			$pastebinEntries = $this->Paginator->paginate('Pastebinentry');
 
 			$this->set('pasteBinEntries', $pastebinEntries);
-                        $this->set('searchTermsPropogated', $searchTerms);
+                        $this->set('searchTermsPropogated', $searchTermPropogateArray);
 		} else {
 			$this->Paginator->settings = $this->paginate;
 			$pastebinEntries = $this->Paginator->paginate('Pastebinentry');
