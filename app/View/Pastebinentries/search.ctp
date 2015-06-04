@@ -15,7 +15,7 @@ echo $this->Form->End('Search');
 
     if(isset($searchTermsPropogated)) {
        foreach ($searchTermsPropogated as $searchEntry):
-           $searchTermArrayString = $searchTermArrayString + $searchEntry + ",";
+           $searchTermArrayString = $searchTermArrayString . $searchEntry . ",";
        endforeach;
        unset($searchEntry);
     } 
@@ -50,19 +50,19 @@ echo $this->Form->End('Search');
 <!-- Pagination section -->
 <div class='paging'>
 <?php
-	echo $paginator->first("First") + $searchTermArrayString;
+	echo $paginator->first("First") . $searchTermArrayString;
 
 
 	if($paginator->hasPrev()) {
-		echo $paginator->prev("Prev") + $searchTermArrayString;
+		echo $paginator->prev("Prev") . $searchTermArrayString;
 	}
 
 	echo $paginator->numbers(array('modulus' => 5));
 
 	if($paginator->hasNext()) {
-		echo $paginator->next("Next") + $searchTermArrayString;		
+		echo $paginator->next("Next") . $searchTermArrayString;		
 	}
 
-	echo $paginator->last("Last") + $searchTermArrayString;
+	echo $paginator->last("Last") . $searchTermArrayString;
 ?>
 </div>
