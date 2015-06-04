@@ -32,6 +32,9 @@ echo $this->Form->End('Search');
 	</tr>	
 	<?php endforeach ?>
 	<?php unset($entry)?>
+        <?php if(isset($searchTerms)) {
+            echo "Search Term: " + $searchTerms;
+        }?>
 </table>
 
 <!-- Pagination section -->
@@ -41,13 +44,13 @@ echo $this->Form->End('Search');
 
 
 	if($paginator->hasPrev()) {
-		echo $paginator->prev("Prev") + $searchTerms;
+		echo $paginator->prev("Prev");
 	}
 
 	echo $paginator->numbers(array('modulus' => 5));
 
 	if($paginator->hasNext()) {
-		echo $paginator->next("Next") + $searchTerms;		
+		echo $paginator->next("Next");		
 	}
 
 	echo $paginator->last("Last");
