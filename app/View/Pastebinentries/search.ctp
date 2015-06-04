@@ -20,7 +20,6 @@ echo $this->Form->End('Search');
        unset($searchEntry);
     } 
     
-    var_dump($searchTermArrayString);
 ?>
 
 <table>
@@ -50,19 +49,21 @@ echo $this->Form->End('Search');
 <!-- Pagination section -->
 <div class='paging'>
 <?php
-	echo $paginator->first("First") . $searchTermArrayString;
+        var_dump($paginator->first("First"));
+
+	echo $paginator->first("First");
 
 
 	if($paginator->hasPrev()) {
-		echo $paginator->prev("Prev") . $searchTermArrayString;
+		echo $paginator->prev("Prev");
 	}
 
 	echo $paginator->numbers(array('modulus' => 5));
 
 	if($paginator->hasNext()) {
-		echo $paginator->next("Next") . $searchTermArrayString;		
+		echo $paginator->next("Next");		
 	}
 
-	echo $paginator->last("Last") . $searchTermArrayString;
+	echo $paginator->last("Last");
 ?>
 </div>
