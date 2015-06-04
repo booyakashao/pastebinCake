@@ -11,11 +11,11 @@ echo $this->Form->End('Search');
 ?>
 <?php 
 
-    $searchTermArrayString = "";
+    $searchTermArrayString = "?searchTerm=";
 
     if(isset($searchTermsPropogated)) {
        foreach ($searchTermsPropogated as $searchEntry):
-           $searchTermArrayString += $searchEntry + ",";
+           $searchTermArrayString = $searchTermArrayString + $searchEntry + ",";
        endforeach;
        unset($searchEntry);
     } 
