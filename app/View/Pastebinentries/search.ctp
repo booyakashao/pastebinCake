@@ -32,9 +32,9 @@ echo $this->Form->End('Search');
 	</tr>	
 	<?php endforeach ?>
 	<?php unset($entry)?>
-        <?php //if(isset($searchTerms)) {
-           // echo "Search Term: " + $searchTerms;
-        //}?>
+        <?php if(isset($searchTermsPropogated)) {
+            echo "Search Term: " + $searchTermsPropogated;
+        }?>
 </table>
 
 <!-- Pagination section -->
