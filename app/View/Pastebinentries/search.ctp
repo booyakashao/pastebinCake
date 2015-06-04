@@ -41,13 +41,13 @@ echo $this->Form->End('Search');
 
 
 	if($paginator->hasPrev()) {
-		echo $paginator->prev("Prev");
+		echo $paginator->prev("Prev") + $searchTerms;
 	}
 
 	echo $paginator->numbers(array('modulus' => 5));
 
 	if($paginator->hasNext()) {
-		echo $paginator->next("Next");		
+		echo $paginator->next("Next") + $searchTerms;		
 	}
 
 	echo $paginator->last("Last");
