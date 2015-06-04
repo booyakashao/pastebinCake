@@ -9,6 +9,9 @@ echo $this->Form->create(null, array('action' => 'search', 'type' => 'post'));
 echo $this->Form->input('searchTerm', array('placeholder' => 'Search should be comma delimited', 'label' => 'Search Term'));
 echo $this->Form->End('Search');
 ?>
+<?php if(isset($searchTermsPropogated)) {
+            echo "Search Term: " + $searchTermsPropogated;
+        }?>
 
 <table>
 	<tr>
@@ -32,9 +35,6 @@ echo $this->Form->End('Search');
 	</tr>	
 	<?php endforeach ?>
 	<?php unset($entry)?>
-        <?php if(isset($searchTermsPropogated)) {
-            echo "Search Term: " + $searchTermsPropogated[0];
-        }?>
 </table>
 
 <!-- Pagination section -->
