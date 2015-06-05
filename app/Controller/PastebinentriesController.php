@@ -45,7 +45,24 @@ class PastebinentriesController extends AppController {
                         $this->set('searchTerms', $this->request->data['Pastebinentry']['searchTerm']);
                         $this->Session->write('searchTermPersisted', $this->request->data['Pastebinentry']['searchTerm']);
 		} else {
-			$this->Paginator->settings = $this->paginate;
+                    $paginateSettings = $this->paginate;
+                        if($this->Session->check('searchTermPersisted')) {
+                            $searchTerms = explode(',', $this->Session->read('searchTermPersisted'));
+                            
+                            $searchTermArray = array('OR' => array());
+
+                            foreach($searchTerms as $searchTerm) {
+				$searchTermArray['OR'][] = array('Pastebinentry.CONTENT LIKE' => "%$searchTerm%");
+                            }
+
+                            $paginateSettings = array(
+				'conditions' => $searchTermArray,
+				'fields' => array('Pastebinentry.id', 'Pastebinentry.URL'),
+				'limit' => 50,
+				'order' => array('Pastebinentry.id' => 'desc')
+                            );
+                        }
+			$this->Paginator->settings = $paginateSettings;
 			$pastebinEntries = $this->Paginator->paginate('Pastebinentry');
 
 			$this->set('pasteBinEntries', $pastebinEntries);
