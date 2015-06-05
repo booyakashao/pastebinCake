@@ -42,6 +42,8 @@ class PastebinentriesController extends AppController {
 			$pastebinEntries = $this->Paginator->paginate('Pastebinentry');
 
 			$this->set('pasteBinEntries', $pastebinEntries);
+                        $this->set('searchTerms', $this->request->data['Pastebinentry']['searchTerm']);
+                        $this->Session->write('searchTermPersisted', $this->request->data['Pastebinentry']['searchTerm']);
 		} else {
 			$this->Paginator->settings = $this->paginate;
 			$pastebinEntries = $this->Paginator->paginate('Pastebinentry');

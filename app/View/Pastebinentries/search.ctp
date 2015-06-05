@@ -6,7 +6,9 @@ $paginator = $this->Paginator;
 
 <?php
 echo $this->Form->create(null, array('action' => 'search', 'type' => 'post'));
-echo $this->Form->input('searchTerm', array('placeholder' => 'Search should be comma delimited', 'label' => 'Search Term'));
+echo $this->Form->input('searchTerm', array('placeholder' => 'Search should be comma delimited',
+                                             'value' => $searchTerms,
+                                            'label' => 'Search Term'));
 echo $this->Form->End('Search');
 ?>
 
