@@ -27,14 +27,15 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	</title>
 	
 	<!--Google Ad sense -->
-	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script type="text/javascript">
+                google_ad_client = "ca-pub-9653430912934834";
+                google_ad_slot = "2946828029";
+                google_ad_width = 728;
+                google_ad_height = 90;
+                google_ad_client</script>
         <!-- Ad1 -->
-        <ins class="adsbygoogle"
-            style="display:inline-block;width:728px;height:90px"
-            data-ad-client="ca-pub-9653430912934834"
-            data-ad-slot="2946828029"></ins>
-        <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
+        <script type="text/javascript"
+        src="//pagead2.googlesyndication.com/pagead/show_ads.js">
         </script>
 	<!--################# -->
 	
