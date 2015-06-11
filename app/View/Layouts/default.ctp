@@ -31,7 +31,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<!-- First Ad -->
 	<ins class="adsbygoogle"
 		style="display:inline-block;width:728px;height:90px"
-		data-ad-client="ca-pub-9653430912934834"
+		data-ad-client="pub-9653430912934834"
 		data-ad-slot="6262524027"></ins>
 	<script>
 	(adsbygoogle = window.adsbygoogle || []).push({});
