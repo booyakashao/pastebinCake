@@ -38,6 +38,16 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
         src="//pagead2.googlesyndication.com/pagead/show_ads.js">
         </script>
 	<!--################# -->
+        
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- Ad1 -->
+        <ins class="adsbygoogle"
+            style="display:inline-block;width:728px;height:90px"
+            accesskey=""data-ad-client="ca-pub-9653430912934834"
+            data-ad-slot="2946828029"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
 	
 	<?php
 		echo $this->Html->meta('icon');
