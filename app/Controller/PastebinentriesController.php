@@ -8,16 +8,19 @@ class PastebinentriesController extends AppController {
 		'limit' => 50,
 		'order' => array('Pastebinentry.id' => 'desc')
 	);
+        
+        public function beforeFilter(Event $event)
+        {
+            parent::beforeFilter($event);
+            $this->set('userRole', $this->Auth->user('role'));
+        }
 
 	public function index() {
 		$this->set('title_for_layout', 'Pastebin Entries');
 		$this->Paginator->settings = $this->paginate;
 		$pastebinEntries = $this->Paginator->paginate('Pastebinentry');
 
-		$this->set('userRole', $this->Auth->user('role'));
 		$this->set('pasteBinEntries', $pastebinEntries);
-		
-		//$this->Session->setFlash('Test index flash');
 	}
 
 	public function search() {
