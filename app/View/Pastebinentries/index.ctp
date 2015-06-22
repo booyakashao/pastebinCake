@@ -31,7 +31,9 @@ $paginator = $this->Paginator;
                             'action' => 'view', 
                             $entry['Pastebinentry']['id']
                         ),
-                        array('class' => 'btn btn-primary'
+                        array(
+                            'class' => 'btn btn-primary',
+                            'escape'=>false
                         )
                     ); 
             ?>
