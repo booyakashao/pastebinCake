@@ -23,7 +23,18 @@ $paginator = $this->Paginator;
                     <?php echo $entry['Pastebinentry']['URL']; ?>
                 </a>
             </h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+            <h4>Delete: 
+                <?php
+                    echo $this->Form->postLink(
+                        'Delete',
+              		array('action' => 'delete', $entry['Pastebinentry']['id']),
+              		array('confirm' => 'Are you sure?')
+                    );
+		?>
+            </h4>
+            <p>
+                 <?php echo substr($entry['Pastebinentry']['CONTENT'],0,122); ?>
+            </p>
             <?php echo $this->Html->link(
                         'View Pastebin <span class="glyphicon glyphicon-chevron-right"></span>', 
                         array(
@@ -37,7 +48,6 @@ $paginator = $this->Paginator;
                         )
                     ); 
             ?>
-            <!--<a class="btn btn-primary" href="#">View Pastebin <span class="glyphicon glyphicon-chevron-right"></span></a> -->
         </div>
     </div>
 <?php endforeach ?>
