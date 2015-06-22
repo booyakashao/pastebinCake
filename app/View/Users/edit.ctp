@@ -1,8 +1,17 @@
 <!-- app/View/Users/edit.ctp -->
 <div class="users form">
 <?php echo $this->Form->create('User'); ?>
-    <fieldset>
-        <legend><?php echo __('Edit User'); ?></legend>
+    <fieldset>   
+        
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Edit User
+                </h1>
+            </div>
+        </div>
+        
         <?php 
 	echo $this->Form->input('username', array('default' => $user['User']['username']));
         echo $this->Form->input('password');

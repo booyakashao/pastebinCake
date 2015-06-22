@@ -1,11 +1,5 @@
 <!-- File :/app/View/Pastebinentries/view.ctp -->
 
-	<?php $this->start('script');?>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<?php $this->end(); ?>
-
-<h3>Pastebin Detailed Entry </h3>
-
 <!-- Page Heading -->
 <div class="row">
     <div class="col-lg-12">

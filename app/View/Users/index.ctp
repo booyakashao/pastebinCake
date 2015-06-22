@@ -1,5 +1,4 @@
 <!-- app/View/Users/index.ctp -->
-<h1>List of active users</h1>
 
 <?php
 $paginator = $this->Paginator;
