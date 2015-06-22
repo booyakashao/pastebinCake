@@ -87,7 +87,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                                 ?>
                             </li>
                             <li>
-                                <?php echo $this->Html->link('Search for Post', array('action' => 'search')); ?>
+                                <?php echo $this->Html->link('Search for Post', 
+                                                            array('controller' => 'pastebinentries',
+                                                                  'action' => 'search')
+                                                            ); 
+                                ?>
                             </li>
                         </ul>
                     </div>

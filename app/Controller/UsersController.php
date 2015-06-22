@@ -6,6 +6,7 @@ class UsersController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
+        $this->set('userRole', $this->Auth->user('role'));
         $this->Auth->allow('index', 'view','logout');
     }
 
