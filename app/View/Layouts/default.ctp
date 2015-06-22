@@ -26,9 +26,23 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
 	<title>
-		<?php //echo $cakeDescription ?>
 		<?php echo $this->fetch('title'); ?>
 	</title>
+        
+        <!--Google Ad sense -->
+        <div style="text-align: center;">
+	<script type="text/javascript">
+                google_ad_client = "ca-pub-9653430912934834";
+                google_ad_slot = "2946828029";
+                google_ad_width = 728;
+                google_ad_height = 90;
+                google_ad_client</script>
+        <!-- Ad1 -->
+        <script type="text/javascript"
+        src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+        </script>
+	<!--################# -->
+        </div>
         
 	<?php
 		echo $this->Html->meta('icon');
@@ -95,26 +109,10 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                 </nav>
             
 		<div id="content">
-
 			<?php echo $this->Session->flash(); ?>
-
 			<?php echo $this->fetch('content'); ?>
 		</div>
 	</div>
 	<?php echo $this->element('sql_dump'); ?>
-    
-    	
-	<!--Google Ad sense -->
-	<script type="text/javascript">
-                google_ad_client = "ca-pub-9653430912934834";
-                google_ad_slot = "2946828029";
-                google_ad_width = 728;
-                google_ad_height = 90;
-                google_ad_client</script>
-        <!-- Ad1 -->
-        <script type="text/javascript"
-        src="//pagead2.googlesyndication.com/pagead/show_ads.js">
-        </script>
-	<!--################# -->
 </body>
 </html>
