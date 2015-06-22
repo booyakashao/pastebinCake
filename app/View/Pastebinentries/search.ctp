@@ -2,7 +2,14 @@
 $paginator = $this->Paginator;
 ?>
 
-<h3>Pastebin Search Query </h3>
+<!-- Page Heading -->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Pastebin Search Query
+            <small>Search persistence may be buggy</small>
+        </h1>
+    </div>
+</div>
 
 <?php
 echo $this->Form->create(null, array('action' => 'search', 'type' => 'post'));

@@ -93,6 +93,13 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                                                             ); 
                                 ?>
                             </li>
+                            <li>
+                                <?php echo $this->Html->link('Logout', 
+                                                            array('controller' => 'users',
+                                                                  'action' => 'logout')
+                                                            ); 
+                                ?>
+                            </li>
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->

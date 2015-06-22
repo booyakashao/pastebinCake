@@ -5,8 +5,13 @@
 $paginator = $this->Paginator;
 ?>
 
-<div>
-<?php echo $this->Html->link('Logout', array('action' => 'logout')); ?>
+<!-- Page Heading -->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">User admin page
+            <small>With great power comes great responsibility</small>
+        </h1>
+    </div>
 </div>
 
 <table>

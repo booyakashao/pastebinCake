@@ -3,7 +3,14 @@
 $paginator = $this->Paginator;
 ?>
 
-<h1>Pastebin Entries</h1>
+<!-- Page Heading -->
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Pastebin Entries
+            <small>Thank you and have an A1 day</small>
+        </h1>
+    </div>
+</div>
 
 <table>
 	<tr>
