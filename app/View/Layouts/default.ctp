@@ -76,13 +76,18 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <li>
-                                <a href="#">About</a>
+                                <?php 
+                                    if($userRole == 'admin') {
+                                        echo $this->Html->link('AdminPage', 
+                                                                array(
+                                                                    'controller' => 'users', 
+                                                                    'action' => 'index')
+                                                            );
+                                    }
+                                ?>
                             </li>
                             <li>
-                                <a href="#">Services</a>
-                            </li>
-                            <li>
-                                <a href="#">Contact</a>
+                                <?php echo $this->Html->link('Search for Post', array('action' => 'search')); ?>
                             </li>
                         </ul>
                     </div>

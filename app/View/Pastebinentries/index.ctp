@@ -3,19 +3,7 @@
 $paginator = $this->Paginator;
 ?>
 
-<div>
-<?php 
-	if($userRole == 'admin') {
-		echo $this->Html->link('AdminPage', array('controller' => 'users', 'action' => 'index'));
-	}
-?>
-</div>
-
 <h1>Pastebin Entries</h1>
-
-<div>
-<?php echo $this->Html->link('Search for Post', array('action' => 'search')); ?>
-</div>
 
 <table>
 	<tr>
