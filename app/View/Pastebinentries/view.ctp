@@ -7,43 +7,9 @@
     </div>
 </div>
 
-<?php $this->append('script');?>
-<script>
-$(document).keydown(function(e){
-      switch(e.keyCode) {
-      	case 37 : 
-		window.location= "/pastebinentries/view/<?php 
-			if($pastebinPrev) {
-				echo $pastebinPrev['Pastebinentry']['id']; 
-			} else {
-				echo $pastebinentry['Pastebinentry']['id'];			
-			}
-				
-	?>"; 
-	break;
-      	case 39 : 
-		window.location= "/pastebinentries/view/<?php
-			if($pastebinNext) {
-			 	echo $pastebinNext['Pastebinentry']['id']; 
-			} else {
-				echo $pastebinentry['Pastebinentry']['id'];	
-			}
-	?>"; 
-	break;
-    	}
-});
-</script>
-<?php $this->end(); ?>
-<br/>
-
-<!--################# -->
-
 <?php
 	echo $this->Html->link("Back to all Pastebins",  array('controller' => 'pastebinentries', 'action' => 'index'));	
 ?>
-
-
-
 
 <div style="width:100%;height:40px;">
 <table>
@@ -81,3 +47,31 @@ echo $pastebinentry['Pastebinentry']['CONTENT'];
               array('confirm' => 'Are you sure?')
          );
 ?>
+
+<?php $this->append('script');?>
+<script>
+$(document).keydown(function(e){
+      switch(e.keyCode) {
+      	case 37 : 
+		window.location= "/pastebinentries/view/<?php 
+			if($pastebinPrev) {
+				echo $pastebinPrev['Pastebinentry']['id']; 
+			} else {
+				echo $pastebinentry['Pastebinentry']['id'];			
+			}
+				
+	?>"; 
+	break;
+      	case 39 : 
+		window.location= "/pastebinentries/view/<?php
+			if($pastebinNext) {
+			 	echo $pastebinNext['Pastebinentry']['id']; 
+			} else {
+				echo $pastebinentry['Pastebinentry']['id'];	
+			}
+	?>"; 
+	break;
+    	}
+});
+</script>
+<?php $this->end(); ?>
