@@ -19,29 +19,46 @@ echo $this->Form->input('searchTerm', array('placeholder' => 'Search should be c
 echo $this->Form->End('Search');
 ?>
 
-<table>
-	<tr>
-		<th>Id</th>
-		<th>URL</th>
-		<th>Delete Action</th>
-	</tr>
-	<?php foreach ($pasteBinEntries as $entry): ?>
-	<tr>
-		<td><?php echo $this->Html->link($entry['Pastebinentry']['id'], array('controller' => 'pastebinentries', 'action' => 'view', $entry['Pastebinentry']['id'])); ?></td>
-		<td><a href="<?php echo $entry['Pastebinentry']['URL']; ?>"><?php echo $entry['Pastebinentry']['URL']; ?></a></td>
-		<td>
-		<?php
-			echo $this->Form->postLink(
-             			'Delete',
-              			array('action' => 'delete', $entry['Pastebinentry']['id']),
-              			array('confirm' => 'Are you sure?')
-         		);
+<?php foreach ($pasteBinEntries as $entry): ?>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>ID: 
+                <?php echo $entry['Pastebinentry']['id']; ?>
+            </h3>
+            <h4>URL: 
+                <a href="<?php echo $entry['Pastebinentry']['URL']; ?>">
+                    <?php echo $entry['Pastebinentry']['URL']; ?>
+                </a>
+            </h4>
+            <h4>Delete: 
+                <?php
+                    echo $this->Form->postLink(
+                        'Delete',
+              		array('action' => 'delete', $entry['Pastebinentry']['id']),
+              		array('confirm' => 'Are you sure?')
+                    );
 		?>
-		</td>
-	</tr>	
-	<?php endforeach ?>
-	<?php unset($entry)?>
-</table>
+            </h4>
+            <p>
+                 <?php echo substr($entry['Pastebinentry']['CONTENT'],0,122); ?>
+            </p>
+            <?php echo $this->Html->link(
+                        'View Pastebin <span class="glyphicon glyphicon-chevron-right"></span>', 
+                        array(
+                            'controller' => 'pastebinentries', 
+                            'action' => 'view', 
+                            $entry['Pastebinentry']['id']
+                        ),
+                        array(
+                            'class' => 'btn btn-primary',
+                            'escape'=>false
+                        )
+                    ); 
+            ?>
+        </div>
+    </div>
+<?php endforeach ?>
+<?php unset($entry)?>
 
 <!-- Pagination section -->
 <div class='paging'>
