@@ -33,7 +33,7 @@ $paginator = $this->Paginator;
 		?>
             </h4>
             <p>
-                 <?php echo substr($entry['Pastebinentry']['CONTENT'],0,300); ?>
+                 <?php echo htmlspecialchars(substr($entry['Pastebinentry']['CONTENT'],0,300)); ?>
             </p>
             <?php echo $this->Html->link(
                         ' View Pastebin <span class="glyphicon glyphicon-chevron-right"></span> ', 
