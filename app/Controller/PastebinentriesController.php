@@ -60,7 +60,7 @@ class PastebinentriesController extends AppController {
 
                             $paginateSettings = array(
 				'conditions' => $searchTermArray,
-				'fields' => array('Pastebinentry.id', 'Pastebinentry.URL'),
+				'fields' => array('Pastebinentry.id', 'Pastebinentry.URL', 'Pastebinentry.CONTENT'),
 				'limit' => 50,
 				'order' => array('Pastebinentry.id' => 'desc')
                             );
