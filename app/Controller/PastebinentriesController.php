@@ -11,10 +11,13 @@ class PastebinentriesController extends AppController {
 		'order' => array('Pastebinentry.id' => 'desc')
 	);
         
+        public $utilities;
+        
         public function beforeFilter()
         {
             parent::beforeFilter();
             $this->set('userRole', $this->Auth->user('role'));
+            $this->utilities = new Utilities();
         }
 
 	public function index() {
@@ -30,12 +33,15 @@ class PastebinentriesController extends AppController {
 		if ($this->request->is('post')) {
 			$searchTerms = explode(',', $this->request->data['Pastebinentry']['searchTerm']);
 			
+                        /*
 			$searchTermArray = array('OR' => array());
 
 			foreach($searchTerms as $searchTerm) {
 				$searchTermArray['OR'][] = array('Pastebinentry.CONTENT LIKE' => "%$searchTerm%");
 			}
-
+                        */
+                        $searchTermArray = $this->utilities->searchTermConcat($searchTerms);
+                        
 			$paginateSettings = array(
 				'conditions' => $searchTermArray,
 				'fields' => array('Pastebinentry.id', 'Pastebinentry.URL', 'Pastebinentry.CONTENT'),
@@ -53,13 +59,15 @@ class PastebinentriesController extends AppController {
                     $paginateSettings = $this->paginate;
                         if($this->Session->check('searchTermPersisted')) {
                             $searchTerms = explode(',', $this->Session->read('searchTermPersisted'));
-                            
+                            /*
                             $searchTermArray = array('OR' => array());
 
                             foreach($searchTerms as $searchTerm) {
 				$searchTermArray['OR'][] = array('Pastebinentry.CONTENT LIKE' => "%$searchTerm%");
                             }
-
+                               */
+                            $searchTermArray = $this->utilities->searchTermConcat($searchTerms);
+                            
                             $paginateSettings = array(
 				'conditions' => $searchTermArray,
 				'fields' => array('Pastebinentry.id', 'Pastebinentry.URL', 'Pastebinentry.CONTENT'),
