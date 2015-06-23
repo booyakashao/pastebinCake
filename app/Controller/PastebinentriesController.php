@@ -1,5 +1,7 @@
 <?php
 
+App::uses('Utilities', 'Lib');
+
 class PastebinentriesController extends AppController {
 	public $helpers = array('Html', 'Form');
 	public $components = array('Paginator');
