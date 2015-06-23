@@ -11,9 +11,9 @@ class PastebinentriesController extends AppController {
 		'order' => array('Pastebinentry.id' => 'desc')
 	);
         
-        public function beforeFilter(Event $event)
+        public function beforeFilter()
         {
-            parent::beforeFilter($event);
+            parent::beforeFilter();
             $this->set('userRole', $this->Auth->user('role'));
         }
 
