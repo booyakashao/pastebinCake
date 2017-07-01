@@ -17,7 +17,7 @@
  */
 
 /**
- * ThePaperMonkiesFixture
+ * Class ThePaperMonkiesFixture
  *
  * @package       Cake.Test.Fixture
  */

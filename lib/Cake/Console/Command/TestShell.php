@@ -71,9 +71,6 @@ class TestShell extends Shell {
 		))->addOption('coverage-clover', array(
 			'help' => __d('cake_console', '<file> Write code coverage data in Clover XML format.'),
 			'default' => false
-		))->addOption('coverage-text', array(
-			'help' => __d('cake_console', 'Output code coverage report in Text format.'),
-			'boolean' => true
 		))->addOption('testdox-html', array(
 			'help' => __d('cake_console', '<file> Write agile documentation in HTML format to file.'),
 			'default' => false
@@ -155,7 +152,6 @@ class TestShell extends Shell {
 			'default' => false
 		))->addOption('directive', array(
 			'help' => __d('cake_console', 'key[=value] Sets a php.ini value.'),
-			'short' => 'd',
 			'default' => false
 		))->addOption('fixture', array(
 			'help' => __d('cake_console', 'Choose a custom fixture manager.')
@@ -183,11 +179,11 @@ class TestShell extends Shell {
 /**
  * Parse the CLI options into an array CakeTestDispatcher can use.
  *
- * @return array|null Array of params for CakeTestDispatcher or null.
+ * @return array Array of params for CakeTestDispatcher
  */
 	protected function _parseArgs() {
 		if (empty($this->args)) {
-			return null;
+			return;
 		}
 		$params = array(
 			'core' => false,
@@ -226,7 +222,6 @@ class TestShell extends Shell {
 		$options = array();
 		$params = $this->params;
 		unset($params['help']);
-		unset($params['quiet']);
 
 		if (!empty($params['no-colors'])) {
 			unset($params['no-colors'], $params['colors']);
@@ -238,11 +233,7 @@ class TestShell extends Shell {
 			if ($value === false) {
 				continue;
 			}
-			if ($param === 'directive') {
-				$options[] = '-d';
-			} else {
-				$options[] = '--' . $param;
-			}
+			$options[] = '--' . $param;
 			if (is_string($value)) {
 				$options[] = $value;
 			}

@@ -17,7 +17,7 @@
  */
 
 /**
- * SomethingElseFixture
+ * Class SomethingElseFixture
  *
  * @package       Cake.Test.Fixture
  */

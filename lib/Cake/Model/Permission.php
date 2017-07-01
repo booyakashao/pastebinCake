@@ -107,10 +107,10 @@ class Permission extends AppModel {
 			return false;
 		}
 
+		$inherited = array();
 		$acoIDs = Hash::extract($acoPath, '{n}.' . $this->Aco->alias . '.id');
 
 		$count = count($aroPath);
-		$inherited = array();
 		for ($i = 0; $i < $count; $i++) {
 			$permAlias = $this->alias;
 
@@ -129,17 +129,19 @@ class Permission extends AppModel {
 			$perms = Hash::extract($perms, '{n}.' . $this->alias);
 			foreach ($perms as $perm) {
 				if ($action === '*') {
-					if (empty($perm)) {
-						continue;
-					}
+
 					foreach ($permKeys as $key) {
-						if ($perm[$key] == -1 && !(isset($inherited[$key]) && $inherited[$key] == 1)) {
-							// Deny, but only if a child node didnt't explicitly allow
-							return false;
-						} elseif ($perm[$key] == 1) {
-							// Allow & inherit from parent nodes
-							$inherited[$key] = $perm[$key];
+						if (!empty($perm)) {
+							if ($perm[$key] == -1) {
+								return false;
+							} elseif ($perm[$key] == 1) {
+								$inherited[$key] = 1;
+							}
 						}
+					}
+
+					if (count($inherited) === count($permKeys)) {
+						return true;
 					}
 				} else {
 					switch ($perm['_' . $action]) {
@@ -151,10 +153,6 @@ class Permission extends AppModel {
 							return true;
 					}
 				}
-			}
-
-			if ($action === '*' && count($inherited) === count($permKeys)) {
-				return true;
 			}
 		}
 		return false;

@@ -32,7 +32,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable {
 /**
  * Holds the CakeValidationRule objects
  *
- * @var CakeValidationRule[]
+ * @var array
  */
 	protected $_rules = array();
 
@@ -172,7 +172,7 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable {
 /**
  * Returns all rules for this validation set
  *
- * @return CakeValidationRule[]
+ * @return array
  */
 	public function getRules() {
 		return $this->_rules;
@@ -183,15 +183,15 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable {
  *
  * ## Example:
  *
- * ```
+ * {{{
  *		$set
- *			->setRule('required', array('rule' => 'notBlank', 'required' => true))
- *			->setRule('between', array('rule' => array('lengthBetween', 4, 10))
- * ```
+ *			->setRule('required', array('rule' => 'notEmpty', 'required' => true))
+ *			->setRule('inRange', array('rule' => array('between', 4, 10))
+ * }}}
  *
  * @param string $name The name under which the rule should be set
  * @param CakeValidationRule|array $rule The validation rule to be set
- * @return self
+ * @return $this
  */
 	public function setRule($name, $rule) {
 		if (!($rule instanceof CakeValidationRule)) {
@@ -206,14 +206,14 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable {
  *
  * ## Example:
  *
- * ```
+ * {{{
  *		$set
  *			->removeRule('required')
  *			->removeRule('inRange')
- * ```
+ * }}}
  *
  * @param string $name The name under which the rule should be unset
- * @return self
+ * @return $this
  */
 	public function removeRule($name) {
 		unset($this->_rules[$name]);
@@ -225,16 +225,16 @@ class CakeValidationSet implements ArrayAccess, IteratorAggregate, Countable {
  *
  * ## Example:
  *
- * ```
+ * {{{
  *		$set->setRules(array(
- *			'required' => array('rule' => 'notBlank', 'required' => true),
+ *			'required' => array('rule' => 'notEmpty', 'required' => true),
  *			'inRange' => array('rule' => array('between', 4, 10)
  * 		));
- * ```
+ * }}}
  *
  * @param array $rules The rules to be set
  * @param bool $mergeVars [optional] If true, merges vars instead of replace. Defaults to true.
- * @return self
+ * @return $this
  */
 	public function setRules($rules = array(), $mergeVars = true) {
 		if ($mergeVars === false) {

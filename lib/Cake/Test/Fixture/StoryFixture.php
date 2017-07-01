@@ -17,7 +17,7 @@
  */
 
 /**
- * StoryFixture
+ * Class StoryFixture
  *
  * @package       Cake.Test.Fixture
  */

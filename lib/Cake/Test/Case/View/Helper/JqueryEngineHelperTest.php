@@ -21,7 +21,7 @@ App::uses('JqueryEngineHelper', 'View/Helper');
 App::uses('View', 'View');
 
 /**
- * JqueryEngineHelperTest
+ * Class JqueryEngineHelperTest
  *
  * @package       Cake.Test.Case.View.Helper
  */

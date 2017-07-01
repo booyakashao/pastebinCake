@@ -198,20 +198,6 @@ class RequestHandlerComponentTest extends CakeTestCase {
 	}
 
 /**
- * Test that RequestHandler does not set extension to csv for text/plain mimetype
- *
- * @return void
- */
-	public function testInitializeContentTypeWithjQueryTextPlainAccept() {
-		$_SERVER['HTTP_ACCEPT'] = 'text/plain, */*; q=0.01';
-		$this->assertNull($this->RequestHandler->ext);
-		Router::parseExtensions('csv');
-
-		$this->RequestHandler->initialize($this->Controller);
-		$this->assertNull($this->RequestHandler->ext);
-	}
-
-/**
  * Test that RequestHandler sets $this->ext when jQuery sends its wonky-ish headers
  * and the application is configured to handle multiple extensions
  *
@@ -618,9 +604,6 @@ class RequestHandlerComponentTest extends CakeTestCase {
 		$_SERVER['REQUEST_METHOD'] = 'DELETE';
 		$this->assertEquals('json', $this->RequestHandler->requestedWith());
 
-		$_SERVER['REQUEST_METHOD'] = 'PATCH';
-		$this->assertEquals('json', $this->RequestHandler->requestedWith());
-
 		$_SERVER['REQUEST_METHOD'] = 'POST';
 		unset($_SERVER['CONTENT_TYPE']);
 		$_SERVER['HTTP_CONTENT_TYPE'] = 'application/json';
@@ -873,6 +856,7 @@ class RequestHandlerComponentTest extends CakeTestCase {
  * array URLs into their correct string ones, and adds base => false so
  * the correct URLs are generated.
  *
+ * @link https://cakephp.lighthouseapp.com/projects/42648-cakephp-1x/tickets/276
  * @return void
  */
 	public function testBeforeRedirectCallbackWithArrayUrl() {

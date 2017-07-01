@@ -24,7 +24,7 @@ App::uses('Inflector', 'Utility');
  *
  * @package       Cake.View
  */
-class Helper extends CakeObject {
+class Helper extends Object {
 
 /**
  * Settings for this helper.
@@ -145,48 +145,9 @@ class Helper extends CakeObject {
  * @var array
  */
 	protected $_minimizedAttributes = array(
-		'allowfullscreen',
-		'async',
-		'autofocus',
-		'autoplay',
-		'checked',
-		'compact',
-		'controls',
-		'declare',
-		'default',
-		'defaultchecked',
-		'defaultmuted',
-		'defaultselected',
-		'defer',
-		'disabled',
-		'enabled',
-		'formnovalidate',
-		'hidden',
-		'indeterminate',
-		'inert',
-		'ismap',
-		'itemscope',
-		'loop',
-		'multiple',
-		'muted',
-		'nohref',
-		'noresize',
-		'noshade',
-		'novalidate',
-		'nowrap',
-		'open',
-		'pauseonexit',
-		'readonly',
-		'required',
-		'reversed',
-		'scoped',
-		'seamless',
-		'selected',
-		'sortable',
-		'spellcheck',
-		'truespeed',
-		'typemustmatch',
-		'visible'
+		'compact', 'checked', 'declare', 'readonly', 'disabled', 'selected',
+		'defer', 'ismap', 'nohref', 'noshade', 'nowrap', 'multiple', 'noresize',
+		'autoplay', 'controls', 'loop', 'muted', 'required', 'novalidate', 'formnovalidate'
 	);
 
 /**
@@ -359,7 +320,8 @@ class Helper extends CakeObject {
 		if (!empty($options['pathPrefix']) && $path[0] !== '/') {
 			$path = $options['pathPrefix'] . $path;
 		}
-		if (!empty($options['ext']) &&
+		if (
+			!empty($options['ext']) &&
 			strpos($path, '?') === false &&
 			substr($path, -strlen($options['ext'])) !== $options['ext']
 		) {
@@ -546,7 +508,7 @@ class Helper extends CakeObject {
  *
  * @param string $message Message to be displayed
  * @param string $okCode Code to be executed after user chose 'OK'
- * @param string $cancelCode Code to be executed after user chose 'Cancel', also executed when okCode doesn't return
+ * @param string $cancelCode Code to be executed after user chose 'Cancel'
  * @param array $options Array of options
  * @return string onclick JS code
  */
@@ -581,7 +543,8 @@ class Helper extends CakeObject {
 		$lastPart = isset($parts[$count - 1]) ? $parts[$count - 1] : null;
 
 		// Either 'body' or 'date.month' type inputs.
-		if (($count === 1 && $this->_modelScope && !$setScope) ||
+		if (
+			($count === 1 && $this->_modelScope && !$setScope) ||
 			(
 				$count === 2 &&
 				in_array($lastPart, $this->_fieldSuffixes) &&
@@ -593,7 +556,8 @@ class Helper extends CakeObject {
 		}
 
 		// 0.name, 0.created.month style inputs. Excludes inputs with the modelScope in them.
-		if ($count >= 2 &&
+		if (
+			$count >= 2 &&
 			is_numeric($parts[0]) &&
 			!is_numeric($parts[1]) &&
 			$this->_modelScope &&

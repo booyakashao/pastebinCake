@@ -17,7 +17,7 @@
  */
 
 /**
- * TestPluginComponent
+ * Class TestPluginComponent
  *
  * @package       Cake.Test.TestApp.Plugin.TestPlugin.Controller.Component
  */

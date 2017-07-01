@@ -26,7 +26,7 @@ class DbConfigAliasedTask extends Shell {
 }
 
 /**
- * TaskCollectionTest
+ * Class TaskCollectionTest
  *
  * @package       Cake.Test.Case.Console
  */

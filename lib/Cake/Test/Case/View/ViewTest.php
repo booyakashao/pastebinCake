@@ -22,8 +22,6 @@ App::uses('Controller', 'Controller');
 App::uses('CacheHelper', 'View/Helper');
 App::uses('HtmlHelper', 'View/Helper');
 App::uses('ErrorHandler', 'Error');
-App::uses('CakeEventManager', 'Event');
-App::uses('CakeEventListener', 'Event');
 
 /**
  * ViewPostsController class
@@ -220,7 +218,7 @@ class TestBeforeAfterHelper extends Helper {
 }
 
 /**
- * TestObjectWithToString
+ * Class TestObjectWithToString
  *
  * An object with the magic method __toString() for testing with view blocks.
  */
@@ -233,66 +231,11 @@ class TestObjectWithToString {
 }
 
 /**
- * TestObjectWithoutToString
+ * Class TestObjectWithoutToString
  *
  * An object without the magic method __toString() for testing with view blocks.
  */
 class TestObjectWithoutToString {
-}
-
-/**
- * TestViewEventListener
- *
- * An event listener to test cakePHP events
- */
-class TestViewEventListener implements CakeEventListener {
-
-/**
- * type of view before rendering has occurred
- *
- * @var string
- */
-	public $beforeRenderViewType;
-
-/**
- * type of view after rendering has occurred
- *
- * @var string
- */
-	public $afterRenderViewType;
-
-/**
- * implementedEvents method
- *
- * @return array
- */
-	public function implementedEvents() {
-		return array(
-				'View.beforeRender' => 'beforeRender',
-				'View.afterRender' => 'afterRender'
-				);
-	}
-
-/**
- * beforeRender method
- *
- * @param CakeEvent $event the event being sent
- * @return void
- */
-	public function beforeRender($event) {
-		$this->beforeRenderViewType = $event->subject()->getCurrentType();
-	}
-
-/**
- * afterRender method
- *
- * @param CakeEvent $event the event being sent
- * @return void
- */
-	public function afterRender($event) {
-		$this->afterRenderViewType = $event->subject()->getCurrentType();
-	}
-
 }
 
 /**
@@ -393,26 +336,6 @@ class ViewTest extends CakeTestCase {
 		$expected = CAKE . 'Test' . DS . 'test_app' . DS . 'View' . DS . 'Layouts' . DS . 'Emails' . DS . 'html' . DS . 'default.ctp';
 		$result = $ThemeView->getLayoutFileName();
 		$this->assertEquals($expected, $result);
-	}
-
-/**
- * Test that plugin files with absolute file paths are scoped
- * to the plugin and do now allow any file path.
- *
- * @expectedException MissingViewException
- * @return void
- */
-	public function testPluginGetTemplateAbsoluteFail() {
-		$this->Controller->viewPath = 'Pages';
-		$this->Controller->action = 'display';
-		$this->Controller->params['pass'] = array('home');
-
-		$view = new TestThemeView($this->Controller);
-		$expected = CAKE . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS . 'Company' . DS . 'TestPluginThree' . DS . 'View' . DS . 'Pages' . DS . 'index.ctp';
-		$result = $view->getViewFileName('Company/TestPluginThree./Pages/index');
-		$this->assertPathEquals($expected, $result);
-
-		$view->getViewFileName('Company/TestPluginThree./etc/passwd');
 	}
 
 /**
@@ -883,30 +806,6 @@ class ViewTest extends CakeTestCase {
 
 		Cache::clear(true, 'test_view');
 		Cache::drop('test_view');
-	}
-
-/**
- * Test element events
- *
- * @return void
- */
-	public function testViewEvent() {
-		$View = new View($this->PostsController);
-		$View->autoLayout = false;
-		$listener = new TestViewEventListener();
-
-		$View->getEventManager()->attach($listener);
-
-		$View->render('index');
-		$this->assertEquals(View::TYPE_VIEW, $listener->beforeRenderViewType);
-		$this->assertEquals(View::TYPE_VIEW, $listener->afterRenderViewType);
-
-		$this->assertEquals($View->getCurrentType(), View::TYPE_VIEW);
-		$View->element('test_element', array(), array('callbacks' => true));
-		$this->assertEquals($View->getCurrentType(), View::TYPE_VIEW);
-
-		$this->assertEquals(View::TYPE_ELEMENT, $listener->beforeRenderViewType);
-		$this->assertEquals(View::TYPE_ELEMENT, $listener->afterRenderViewType);
 	}
 
 /**
@@ -1446,20 +1345,10 @@ class ViewTest extends CakeTestCase {
 	}
 
 /**
- * Test checking a block's existance.
- *
- * @return void
- */
-	public function testBlockExist() {
-		$this->assertFalse($this->View->exists('test'));
-		$this->View->assign('test', 'Block content');
-		$this->assertTrue($this->View->exists('test'));
-	}
-
-/**
  * Test setting a block's content to null
  *
  * @return void
+ * @link https://cakephp.lighthouseapp.com/projects/42648/tickets/3938-this-redirectthis-auth-redirecturl-broken
  */
 	public function testBlockSetNull() {
 		$this->View->assign('testWithNull', null);

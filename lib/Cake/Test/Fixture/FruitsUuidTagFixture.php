@@ -17,7 +17,7 @@
  */
 
 /**
- * FruitsUuidTagFixture
+ * Class FruitsUuidTagFixture
  *
  * @package       Cake.Test.Fixture
  */

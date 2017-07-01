@@ -9,7 +9,8 @@
  * @since         CakePHP(tm) v 0.2.9
  */
 
-/**
+/*
+ *
  * Using the Schema command line utility
  * cake schema run create DbAcl
  *

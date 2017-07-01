@@ -17,7 +17,7 @@
  */
 
 /**
- * UuiditemFixture
+ * Class UuiditemFixture
  *
  * @package       Cake.Test.Fixture
  */

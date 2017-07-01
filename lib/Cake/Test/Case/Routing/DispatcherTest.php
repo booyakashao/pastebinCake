@@ -589,7 +589,6 @@ class DispatcherTest extends CakeTestCase {
  * testParseParamsWithoutZerosAndEmptyPost method
  *
  * @return void
- * @triggers DispatcherTest $Dispatcher, array('request' => $request)
  */
 	public function testParseParamsWithoutZerosAndEmptyPost() {
 		$Dispatcher = new Dispatcher();
@@ -608,7 +607,6 @@ class DispatcherTest extends CakeTestCase {
  * testParseParamsReturnsPostedData method
  *
  * @return void
- * @triggers DispatcherTest $Dispatcher, array('request' => $request)
  */
 	public function testParseParamsReturnsPostedData() {
 		$_POST['testdata'] = "My Posted Content";
@@ -624,7 +622,6 @@ class DispatcherTest extends CakeTestCase {
  * testParseParamsWithSingleZero method
  *
  * @return void
- * @triggers DispatcherTest $Dispatcher, array('request' => $test)
  */
 	public function testParseParamsWithSingleZero() {
 		$Dispatcher = new Dispatcher();
@@ -643,7 +640,6 @@ class DispatcherTest extends CakeTestCase {
  * testParseParamsWithManySingleZeros method
  *
  * @return void
- * @triggers DispatcherTest $Dispatcher, array('request' => $test)
  */
 	public function testParseParamsWithManySingleZeros() {
 		$Dispatcher = new Dispatcher();
@@ -663,7 +659,6 @@ class DispatcherTest extends CakeTestCase {
  * testParseParamsWithManyZerosInEachSectionOfUrl method
  *
  * @return void
- * @triggers DispatcherTest $Dispatcher, array('request' => $test)
  */
 	public function testParseParamsWithManyZerosInEachSectionOfUrl() {
 		$Dispatcher = new Dispatcher();
@@ -683,7 +678,6 @@ class DispatcherTest extends CakeTestCase {
  * testParseParamsWithMixedOneToManyZerosInEachSectionOfUrl method
  *
  * @return void
- * @triggers DispatcherTest $Dispatcher, array('request' => $test)
  */
 	public function testParseParamsWithMixedOneToManyZerosInEachSectionOfUrl() {
 		$Dispatcher = new Dispatcher();
@@ -703,8 +697,6 @@ class DispatcherTest extends CakeTestCase {
  * testQueryStringOnRoot method
  *
  * @return void
- * @triggers DispatcherTest $Dispatcher, array('request' => $request)
- * @triggers DispatcherTest $Dispatcher, array('request' => $request)
  */
 	public function testQueryStringOnRoot() {
 		Router::reload();
@@ -936,7 +928,6 @@ class DispatcherTest extends CakeTestCase {
  * testPluginDispatch method
  *
  * @return void
- * @triggers DispatcherTest $Dispatcher, array('request' => $url)
  */
 	public function testPluginDispatch() {
 		$_POST = array();
@@ -1649,11 +1640,6 @@ class DispatcherTest extends CakeTestCase {
  * testHttpMethodOverrides method
  *
  * @return void
- * @triggers DispatcherTest $dispatcher, array('request' => $request)
- * @triggers DispatcherTest $dispatcher, array('request' => $request)
- * @triggers DispatcherTest $dispatcher, array('request' => $request)
- * @triggers DispatcherTest $dispatcher, array('request' => $request)
- * @triggers DispatcherTest $dispatcher, array('request' => $request)
  */
 	public function testHttpMethodOverrides() {
 		Router::reload();

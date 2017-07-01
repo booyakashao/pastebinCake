@@ -17,7 +17,7 @@
  */
 
 /**
- * ExampleShell
+ * Class ExampleShell
  *
  * @package       Cake.Test.TestApp.Plugin.TestPluginTwo.Console.Command
  */

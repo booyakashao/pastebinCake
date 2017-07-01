@@ -19,7 +19,7 @@
 App::uses('IniReader', 'Configure');
 
 /**
- * IniReaderTest
+ * Class IniReaderTest
  *
  * @package       Cake.Test.Case.Configure
  */

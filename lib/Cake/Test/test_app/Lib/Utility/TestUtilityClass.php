@@ -17,7 +17,7 @@
  */
 
 /**
- * TestUtilityClass
+ * Class TestUtilityClass
  *
  * @package       Cake.Test.TestApp.Lib.Utility
  */

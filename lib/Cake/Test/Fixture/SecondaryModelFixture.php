@@ -17,7 +17,7 @@
  */
 
 /**
- * SecondaryModelFixture
+ * Class SecondaryModelFixture
  *
  * @package       Cake.Test.Fixture
  */

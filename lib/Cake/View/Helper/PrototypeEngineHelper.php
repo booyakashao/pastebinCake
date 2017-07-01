@@ -114,7 +114,7 @@ class PrototypeEngineHelper extends JsBaseEngineHelper {
  * Create javascript selector for a CSS rule
  *
  * @param string $selector The selector that is targeted
- * @return self
+ * @return $this
  */
 	public function get($selector) {
 		$this->_multiple = false;

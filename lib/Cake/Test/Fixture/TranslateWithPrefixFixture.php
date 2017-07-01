@@ -18,7 +18,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 /**
- * TranslateWithPrefixFixture
+ * Class TranslateWithPrefixFixture
  *
  * @package       Cake.Test.Fixture
  */

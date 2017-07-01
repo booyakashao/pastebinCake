@@ -17,7 +17,7 @@
  */
 
 /**
- * ThreadFixture
+ * Class ThreadFixture
  *
  * @package       Cake.Test.Fixture
  */

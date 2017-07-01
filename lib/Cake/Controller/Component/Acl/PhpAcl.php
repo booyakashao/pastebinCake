@@ -22,7 +22,7 @@
  *
  * @package Cake.Controller.Component.Acl
  */
-class PhpAcl extends CakeObject implements AclInterface {
+class PhpAcl extends Object implements AclInterface {
 
 /**
  * Constant for deny
@@ -68,7 +68,7 @@ class PhpAcl extends CakeObject implements AclInterface {
  */
 	public function __construct() {
 		$this->options = array(
-			'policy' => static::DENY,
+			'policy' => self::DENY,
 			'config' => APP . 'Config' . DS . 'acl.php',
 		);
 	}
@@ -252,7 +252,7 @@ class PhpAco {
 			}
 
 			foreach ($root as $node => $elements) {
-				$pattern = '/^' . str_replace(array_keys(static::$modifiers), array_values(static::$modifiers), $node) . '$/';
+				$pattern = '/^' . str_replace(array_keys(self::$modifiers), array_values(self::$modifiers), $node) . '$/';
 
 				if ($node == $aco[$level] || preg_match($pattern, $aco[$level])) {
 					// merge allow/denies with $path of current level
@@ -494,7 +494,7 @@ class PhpAro {
 				return $this->aliases[$mapped];
 			}
 		}
-		return static::DEFAULT_ROLE;
+		return self::DEFAULT_ROLE;
 	}
 
 /**

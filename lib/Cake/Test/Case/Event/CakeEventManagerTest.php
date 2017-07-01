@@ -88,6 +88,7 @@ class CustomTestEventListener extends CakeEventTestListener implements CakeEvent
 
 /**
  * Tests the CakeEventManager class functionality
+ *
  */
 class CakeEventManagerTest extends CakeTestCase {
 
@@ -192,7 +193,6 @@ class CakeEventManagerTest extends CakeTestCase {
  * Tests event dispatching
  *
  * @return void
- * @triggers fake.event
  */
 	public function testDispatch() {
 		$manager = new CakeEventManager();
@@ -227,7 +227,6 @@ class CakeEventManagerTest extends CakeTestCase {
  * Tests event dispatching with a return value
  *
  * @return void
- * @triggers fake.event
  */
 	public function testDispatchReturnValue() {
 		$this->skipIf(
@@ -255,7 +254,6 @@ class CakeEventManagerTest extends CakeTestCase {
  * Tests that returning false in a callback stops the event
  *
  * @return void
- * @triggers fake.event
  */
 	public function testDispatchFalseStopsEvent() {
 		$this->skipIf(
@@ -283,7 +281,6 @@ class CakeEventManagerTest extends CakeTestCase {
  * Tests event dispatching using priorities
  *
  * @return void
- * @triggers fake.event
  */
 	public function testDispatchPrioritized() {
 		$manager = new CakeEventManager();
@@ -301,7 +298,6 @@ class CakeEventManagerTest extends CakeTestCase {
  * Tests event dispatching with passed params
  *
  * @return void
- * @triggers fake.event $this, array('some' => 'data')
  */
 	public function testDispatchPassingParams() {
 		$manager = new CakeEventManager();
@@ -320,9 +316,6 @@ class CakeEventManagerTest extends CakeTestCase {
  * Tests subscribing a listener object and firing the events it subscribed to
  *
  * @return void
- * @triggers fake.event
- * @triggers another.event $this, array('some' => 'data')
- * @triggers multiple.handlers
  */
 	public function testAttachSubscriber() {
 		$manager = new CakeEventManager();
@@ -387,7 +380,6 @@ class CakeEventManagerTest extends CakeTestCase {
  * Tests that the global event manager gets the event too from any other manager
  *
  * @return void
- * @triggers fake.event
  */
 	public function testDispatchWithGlobal() {
 		$generalManager = $this->getMock('CakeEventManager', array('prioritisedListeners'));
@@ -404,7 +396,6 @@ class CakeEventManagerTest extends CakeTestCase {
  * Tests that stopping an event will not notify the rest of the listeners
  *
  * @return void
- * @triggers fake.event
  */
 	public function testStopPropagation() {
 		$generalManager = $this->getMock('CakeEventManager');
@@ -432,7 +423,6 @@ class CakeEventManagerTest extends CakeTestCase {
  * Tests event dispatching using priorities
  *
  * @return void
- * @triggers fake.event
  */
 	public function testDispatchPrioritizedWithGlobal() {
 		$generalManager = $this->getMock('CakeEventManager');
@@ -464,7 +454,6 @@ class CakeEventManagerTest extends CakeTestCase {
  * Tests event dispatching using priorities
  *
  * @return void
- * @triggers fake.event
  */
 	public function testDispatchGlobalBeforeLocal() {
 		$generalManager = $this->getMock('CakeEventManager');
@@ -501,7 +490,6 @@ class CakeEventManagerTest extends CakeTestCase {
 /**
  * Tests events dispatched by a local manager can be handled by
  * handler registered in the global event manager
- * @triggers my_event $manager
  */
 	public function testDispatchLocalHandledByGlobal() {
 		$callback = array($this, 'onMyEvent');
@@ -517,7 +505,6 @@ class CakeEventManagerTest extends CakeTestCase {
  * listeners at the same priority.
  *
  * @return void
- * @triggers fake.event $this
  */
 	public function testDispatchWithGlobalAndLocalEvents() {
 		$listener = new CustomTestEventListener();

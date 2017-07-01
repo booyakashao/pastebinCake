@@ -229,7 +229,7 @@ class RequestHandlerComponent extends Component {
  */
 	public function convertXml($xml) {
 		try {
-			$xml = Xml::build($xml, array('readFile' => false));
+			$xml = Xml::build($xml);
 			if (isset($xml->data)) {
 				return Xml::toArray($xml->data);
 			}
@@ -280,7 +280,7 @@ class RequestHandlerComponent extends Component {
  * "304 Not Modified" header.
  *
  * @param Controller $controller Controller instance.
- * @return bool False if the render process should be aborted.
+ * @return bool false if the render process should be aborted
  */
 	public function beforeRender(Controller $controller) {
 		if ($this->settings['checkHttpCache'] && $this->response->checkNotModified($this->request)) {
@@ -506,12 +506,7 @@ class RequestHandlerComponent extends Component {
  *   in the request content type will be returned.
  */
 	public function requestedWith($type = null) {
-		if (
-			!$this->request->is('patch') &&
-			!$this->request->is('post') &&
-			!$this->request->is('put') &&
-			!$this->request->is('delete')
-		) {
+		if (!$this->request->is('post') && !$this->request->is('put') && !$this->request->is('delete')) {
 			return null;
 		}
 		if (is_array($type)) {

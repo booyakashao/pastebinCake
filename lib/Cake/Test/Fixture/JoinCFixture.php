@@ -17,7 +17,7 @@
  */
 
 /**
- * JoinCFixture
+ * Class JoinCFixture
  *
  * @package       Cake.Test.Fixture
  */

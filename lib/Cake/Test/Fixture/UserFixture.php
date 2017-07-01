@@ -17,7 +17,7 @@
  */
 
 /**
- * UserFixture
+ * Class UserFixture
  *
  * @package       Cake.Test.Fixture
  */

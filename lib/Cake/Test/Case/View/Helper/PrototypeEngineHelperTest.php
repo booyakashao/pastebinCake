@@ -21,7 +21,7 @@ App::uses('JsHelper', 'View/Helper');
 App::uses('PrototypeEngineHelper', 'View/Helper');
 
 /**
- * PrototypeEngineHelperTest
+ * Class PrototypeEngineHelperTest
  *
  * @package       Cake.Test.Case.View.Helper
  */

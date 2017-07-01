@@ -26,28 +26,16 @@ App::uses('Cache', 'Cache');
 class ApcEngineTest extends CakeTestCase {
 
 /**
- * APC extension to be used
- *
- * @var string
- */
-	protected $_apcExtension = 'apc';
-
-/**
  * setUp method
  *
  * @return void
  */
 	public function setUp() {
 		parent::setUp();
-		$hasApc = extension_loaded('apc') || extension_loaded('apcu');
-		$this->skipIf(!$hasApc, 'Apc is not installed or configured properly.');
+		$this->skipIf(!function_exists('apc_store'), 'Apc is not installed or configured properly.');
 
-		if (PHP_SAPI === 'cli') {
+		if (php_sapi_name() === 'cli') {
 			$this->skipIf(!ini_get('apc.enable_cli'), 'APC is not enabled for the CLI.');
-		}
-
-		if (extension_loaded('apcu')) {
-			$this->_apcExtension = 'apcu';
 		}
 
 		$this->_cacheDisable = Configure::read('Cache.disable');
@@ -159,8 +147,7 @@ class ApcEngineTest extends CakeTestCase {
  * @return void
  */
 	public function testDecrement() {
-		$hasSupport = function_exists('apc_dec') || function_exists('apcu_dec');
-		$this->skipIf(!$hasSupport, 'No apc_dec()/apcu_dec() function, cannot test decrement().');
+		$this->skipIf(!function_exists('apc_dec'), 'No apc_dec() function, cannot test decrement().');
 
 		$result = Cache::write('test_decrement', 5, 'apc');
 		$this->assertTrue($result);
@@ -184,8 +171,7 @@ class ApcEngineTest extends CakeTestCase {
  * @return void
  */
 	public function testIncrement() {
-		$hasSupport = function_exists('apc_inc') || function_exists('apcu_inc');
-		$this->skipIf(!function_exists('apc_inc'), 'No apc_inc()/apcu_inc() function, cannot test increment().');
+		$this->skipIf(!function_exists('apc_inc'), 'No apc_inc() function, cannot test increment().');
 
 		$result = Cache::write('test_increment', 5, 'apc');
 		$this->assertTrue($result);
@@ -209,18 +195,14 @@ class ApcEngineTest extends CakeTestCase {
  * @return void
  */
 	public function testClear() {
-		$storeFunc = $this->_apcExtension . '_store';
-		$fetchFunc = $this->_apcExtension . '_fetch';
-		$deleteFunc = $this->_apcExtension . '_delete';
-
-		$storeFunc('not_cake', 'survive');
+		apc_store('not_cake', 'survive');
 		Cache::write('some_value', 'value', 'apc');
 
 		$result = Cache::clear(false, 'apc');
 		$this->assertTrue($result);
 		$this->assertFalse(Cache::read('some_value', 'apc'));
-		$this->assertEquals('survive', $fetchFunc('not_cake'));
-		$deleteFunc('not_cake');
+		$this->assertEquals('survive', apc_fetch('not_cake'));
+		apc_delete('not_cake');
 	}
 
 /**
@@ -231,7 +213,6 @@ class ApcEngineTest extends CakeTestCase {
  * @return void
  */
 	public function testGroupsReadWrite() {
-		$incFunc = $this->_apcExtension . '_inc';
 		Cache::config('apc_groups', array(
 			'engine' => 'Apc',
 			'duration' => 0,
@@ -241,12 +222,12 @@ class ApcEngineTest extends CakeTestCase {
 		$this->assertTrue(Cache::write('test_groups', 'value', 'apc_groups'));
 		$this->assertEquals('value', Cache::read('test_groups', 'apc_groups'));
 
-		$incFunc('test_group_a');
+		apc_inc('test_group_a');
 		$this->assertFalse(Cache::read('test_groups', 'apc_groups'));
 		$this->assertTrue(Cache::write('test_groups', 'value2', 'apc_groups'));
 		$this->assertEquals('value2', Cache::read('test_groups', 'apc_groups'));
 
-		$incFunc('test_group_b');
+		apc_inc('test_group_b');
 		$this->assertFalse(Cache::read('test_groups', 'apc_groups'));
 		$this->assertTrue(Cache::write('test_groups', 'value3', 'apc_groups'));
 		$this->assertEquals('value3', Cache::read('test_groups', 'apc_groups'));
@@ -291,24 +272,5 @@ class ApcEngineTest extends CakeTestCase {
 		$this->assertTrue(Cache::write('test_groups', 'value2', 'apc_groups'));
 		$this->assertTrue(Cache::clearGroup('group_b', 'apc_groups'));
 		$this->assertFalse(Cache::read('test_groups', 'apc_groups'));
-	}
-
-/**
- * Test add method.
- *
- * @return void
- */
-	public function testAdd() {
-		Cache::delete('test_add_key', 'apc');
-
-		$result = Cache::add('test_add_key', 'test data', 'apc');
-		$this->assertTrue($result);
-
-		$expected = 'test data';
-		$result = Cache::read('test_add_key', 'apc');
-		$this->assertEquals($expected, $result);
-
-		$result = Cache::add('test_add_key', 'test data 2', 'apc');
-		$this->assertFalse($result);
 	}
 }

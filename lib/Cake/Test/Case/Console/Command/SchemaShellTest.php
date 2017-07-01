@@ -617,19 +617,19 @@ class SchemaShellTest extends CakeTestCase {
 		$this->Shell->params = array(
 			'plugin' => 'TestPlugin',
 			'connection' => 'test',
-			'name' => 'custom_names',
+			'name' => 'custom_name',
 			'force' => false,
 			'overwrite' => true,
 		);
 		$this->Shell->startup();
-		if (file_exists($this->Shell->Schema->path . DS . 'custom_names.php')) {
-			unlink($this->Shell->Schema->path . DS . 'custom_names.php');
+		if (file_exists($this->Shell->Schema->path . DS . 'custom_name.php')) {
+			unlink($this->Shell->Schema->path . DS . 'custom_name.php');
 		}
 		$this->Shell->generate();
 
-		$contents = file_get_contents($this->Shell->Schema->path . DS . 'custom_names.php');
-		$this->assertRegExp('/class CustomNamesSchema/', $contents);
-		unlink($this->Shell->Schema->path . DS . 'custom_names.php');
+		$contents = file_get_contents($this->Shell->Schema->path . DS . 'custom_name.php');
+		$this->assertRegExp('/class CustomNameSchema/', $contents);
+		unlink($this->Shell->Schema->path . DS . 'custom_name.php');
 		CakePlugin::unload();
 	}
 

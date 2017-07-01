@@ -17,7 +17,7 @@
  */
 
 /**
- * ItemsPortfolioFixture
+ * Class ItemsPortfolioFixture
  *
  * @package       Cake.Test.Fixture
  */

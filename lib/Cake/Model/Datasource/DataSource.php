@@ -24,7 +24,7 @@
  * @link          http://book.cakephp.org/2.0/en/models/datasources.html#basic-api-for-datasources
  * @package       Cake.Model.Datasource
  */
-class DataSource extends CakeObject {
+class DataSource extends Object {
 
 /**
  * Are we connected to the DataSource?
@@ -368,7 +368,7 @@ class DataSource extends CakeObject {
 				} else {
 					$found = false;
 					foreach (array_reverse($stack) as $assocData) {
-						if (is_string($assocData) && isset($data[$assocData]) && isset($data[$assocData][$insertKey])) {
+						if (isset($data[$assocData]) && isset($data[$assocData][$insertKey])) {
 							$val = $data[$assocData][$insertKey];
 							$found = true;
 							break;

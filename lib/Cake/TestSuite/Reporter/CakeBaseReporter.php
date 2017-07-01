@@ -15,9 +15,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-if (!defined('__PHPUNIT_PHAR__')) {
-	require_once 'PHPUnit/TextUI/ResultPrinter.php';
-}
+require_once 'PHPUnit/TextUI/ResultPrinter.php';
 
 /**
  * CakeBaseReporter contains common reporting features used in the CakePHP Test suite

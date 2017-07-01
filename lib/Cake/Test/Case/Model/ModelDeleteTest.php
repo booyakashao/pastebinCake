@@ -422,20 +422,6 @@ class ModelDeleteTest extends BaseModelTest {
 	}
 
 /**
- * testDeleteAll diamond operator method
- *
- * @return void
- */
-	public function testDeleteAllDiamondOperator() {
-		$this->loadFixtures('Article');
-		$article = new Article();
-
-		$result = $article->deleteAll(array('Article.id <>' => 1));
-		$this->assertTrue($result);
-		$this->assertFalse($article->exists(2));
-	}
-
-/**
  * testDeleteAllUnknownColumn method
  *
  * @expectedException PDOException

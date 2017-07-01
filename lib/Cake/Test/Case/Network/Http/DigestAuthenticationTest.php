@@ -20,7 +20,7 @@ App::uses('HttpSocket', 'Network/Http');
 App::uses('DigestAuthentication', 'Network/Http');
 
 /**
- * DigestHttpSocket
+ * Class DigestHttpSocket
  *
  * @package       Cake.Test.Case.Network.Http
  */

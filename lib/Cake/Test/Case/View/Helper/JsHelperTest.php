@@ -26,7 +26,7 @@ App::uses('View', 'View');
 App::uses('ClassRegistry', 'Utility');
 
 /**
- * JsEncodingObject
+ * Class JsEncodingObject
  *
  * @package       Cake.Test.Case.View.Helper
  */
@@ -41,7 +41,7 @@ class JsEncodingObject {
 }
 
 /**
- * OptionEngineHelper
+ * Class OptionEngineHelper
  *
  * @package       Cake.Test.Case.View.Helper
  */

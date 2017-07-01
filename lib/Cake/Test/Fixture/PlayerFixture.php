@@ -17,7 +17,7 @@
  */
 
 /**
- * PlayerFixture
+ * Class PlayerFixture
  *
  * @package       Cake.Test.Fixture
  */

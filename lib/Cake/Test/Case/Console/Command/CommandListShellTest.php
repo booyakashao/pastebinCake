@@ -23,7 +23,7 @@ App::uses('Shell', 'Console');
 App::uses('CommandTask', 'Console/Command/Task');
 
 /**
- * TestStringOutput
+ * Class TestStringOutput
  *
  * @package       Cake.Test.Case.Console.Command
  */
@@ -38,7 +38,7 @@ class TestStringOutput extends ConsoleOutput {
 }
 
 /**
- * CommandListShellTest
+ * Class CommandListShellTest
  *
  * @package       Cake.Test.Case.Console.Command
  */

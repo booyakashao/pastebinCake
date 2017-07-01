@@ -94,7 +94,7 @@ if (isset($filePresent)):
 		$errorMsg = $connectionError->getMessage();
 		if (method_exists($connectionError, 'getAttributes')):
 			$attributes = $connectionError->getAttributes();
-			if (isset($attributes['message'])):
+			if (isset($errorMsg['message'])):
 				$errorMsg .= '<br />' . $attributes['message'];
 			endif;
 		endif;
@@ -138,7 +138,7 @@ endif;
 		echo '<span class="notice">';
 			echo __d('cake_dev', 'DebugKit is not installed. It will help you inspect and debug different aspects of your application.');
 			echo '<br/>';
-			echo __d('cake_dev', 'You can install it from %s', $this->Html->link('GitHub', 'https://github.com/cakephp/debug_kit/tree/2.2'));
+			echo __d('cake_dev', 'You can install it from %s', $this->Html->link('GitHub', 'https://github.com/cakephp/debug_kit'));
 		echo '</span>';
 	endif;
 	?>
@@ -178,7 +178,7 @@ You can also add some CSS styles for your pages at: %s.',
 <p>
 <ul>
 	<li>
-		<?php echo $this->Html->link('DebugKit', 'https://github.com/cakephp/debug_kit/tree/2.2') ?>:
+		<?php echo $this->Html->link('DebugKit', 'https://github.com/cakephp/debug_kit') ?>:
 		<?php echo __d('cake_dev', 'provides a debugging toolbar and enhanced debugging tools for CakePHP applications.'); ?>
 	</li>
 	<li>
@@ -209,10 +209,8 @@ You can also add some CSS styles for your pages at: %s.',
 	<ul><li><?php echo __d('cake_dev', 'A comprehensive list of all CakePHP plugins created by the community'); ?></li></ul></li>
 	<li><a href="http://community.cakephp.org"><?php echo __d('cake_dev', 'CakePHP Community Center'); ?> </a>
 	<ul><li><?php echo __d('cake_dev', 'Everything related to the CakePHP community in one place'); ?></li></ul></li>
-	<li><a href="http://discourse.cakephp.org/">CakePHP Official Forum </a>
-	<ul><li>CakePHP discussion forum</li></ul></li>
-	<li><a href="http://discourse.cakephp.org/"><?php echo __d('cake_dev', 'CakePHP Official Forum'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'CakePHP discussion forum'); ?></li></ul></li>
+	<li><a href="https://groups.google.com/group/cake-php"><?php echo __d('cake_dev', 'CakePHP Google Group'); ?> </a>
+	<ul><li><?php echo __d('cake_dev', 'Community mailing list'); ?></li></ul></li>
 	<li><a href="irc://irc.freenode.net/cakephp">irc.freenode.net #cakephp</a>
 	<ul><li><?php echo __d('cake_dev', 'Live chat about CakePHP'); ?></li></ul></li>
 	<li><a href="https://github.com/cakephp/"><?php echo __d('cake_dev', 'CakePHP Code'); ?> </a>

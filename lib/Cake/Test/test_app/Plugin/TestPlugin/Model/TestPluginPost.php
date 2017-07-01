@@ -17,7 +17,7 @@
  */
 
 /**
- * TestPluginPost
+ * Class TestPluginPost
  *
  * @package       Cake.Test.TestApp.Plugin.TestPlugin.Model
  */

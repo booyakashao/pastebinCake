@@ -145,9 +145,7 @@ class Scaffold {
 			$this->controller->viewClass = 'Scaffold';
 		}
 		$this->_validSession = (
-			isset($this->controller->Session) &&
-			$this->controller->Session->valid() &&
-			isset($this->controller->Flash)
+			isset($this->controller->Session) && $this->controller->Session->valid()
 		);
 		$this->_scaffold($request);
 	}
@@ -248,12 +246,12 @@ class Scaffold {
 							Inflector::humanize($this->modelKey),
 							$success
 						);
-						return $this->_sendMessage($message, 'success');
+						return $this->_sendMessage($message);
 					}
 					return $this->controller->afterScaffoldSaveError($action);
 				}
 				if ($this->_validSession) {
-					$this->controller->Flash->set(__d('cake', 'Please correct errors below.'));
+					$this->controller->Session->setFlash(__d('cake', 'Please correct errors below.'));
 				}
 			}
 
@@ -305,7 +303,7 @@ class Scaffold {
 			}
 			if ($this->ScaffoldModel->delete()) {
 				$message = __d('cake', 'The %1$s with id: %2$s has been deleted.', Inflector::humanize($this->modelClass), $id);
-				return $this->_sendMessage($message, 'success');
+				return $this->_sendMessage($message);
 			}
 			$message = __d('cake',
 				'There was an error deleting the %1$s with id: %2$s',
@@ -323,12 +321,11 @@ class Scaffold {
  * on the availability of a session
  *
  * @param string $message Message to display
- * @param string $element Flash template to use
- * @return \Cake\Network\Response|null
+ * @return void
  */
-	protected function _sendMessage($message, $element = 'default') {
+	protected function _sendMessage($message) {
 		if ($this->_validSession) {
-			$this->controller->Flash->set($message, compact('element'));
+			$this->controller->Session->setFlash($message);
 			return $this->controller->redirect($this->redirect);
 		}
 		$this->controller->flash($message, $this->redirect);
@@ -402,7 +399,7 @@ class Scaffold {
 				}
 			} else {
 				throw new MissingActionException(array(
-					'controller' => get_class($this->controller),
+					'controller' => $this->controller->name,
 					'action' => $request->action
 				));
 			}

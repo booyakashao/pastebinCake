@@ -17,7 +17,7 @@
  */
 
 /**
- * JoinThingFixture
+ * Class JoinThingFixture
  *
  * @package       Cake.Test.Fixture
  */

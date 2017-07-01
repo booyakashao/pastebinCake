@@ -19,7 +19,7 @@
 App::uses('AppController', 'Controller');
 
 /**
- * TestPluginAppController
+ * Class TestPluginAppController
  *
  * @package       Cake.Test.TestApp.Plugin.TestPlugin.Controller
  */

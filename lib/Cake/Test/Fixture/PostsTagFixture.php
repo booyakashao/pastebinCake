@@ -17,7 +17,7 @@
  */
 
 /**
- * PostsTagFixture
+ * Class PostsTagFixture
  *
  * @package       Cake.Test.Fixture
  */

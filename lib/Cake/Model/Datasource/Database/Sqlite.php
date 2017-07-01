@@ -17,7 +17,7 @@
  */
 
 App::uses('DboSource', 'Model/Datasource');
-App::uses('CakeText', 'Utility');
+App::uses('String', 'Utility');
 
 /**
  * DBO implementation for the SQLite3 DBMS.
@@ -185,9 +185,6 @@ class Sqlite extends DboSource {
 				'default' => $default,
 				'length' => $this->length($column['type'])
 			);
-			if (in_array($fields[$column['name']]['type'], array('timestamp', 'datetime')) && strtoupper($fields[$column['name']]['default']) === 'CURRENT_TIMESTAMP') {
-				$fields[$column['name']]['default'] = null;
-			}
 			if ($column['pk'] == 1) {
 				$fields[$column['name']]['key'] = $this->index['PRI'];
 				$fields[$column['name']]['null'] = false;
@@ -303,16 +300,11 @@ class Sqlite extends DboSource {
 		// PDO::getColumnMeta is experimental and does not work with sqlite3,
 		// so try to figure it out based on the querystring
 		$querystring = $results->queryString;
-		if (stripos($querystring, 'SELECT') === 0 && stripos($querystring, 'FROM') > 0) {
-			$selectpart = substr($querystring, 7);
-			$selects = array();
-			foreach (CakeText::tokenize($selectpart, ',', '(', ')') as $part) {
-				$fromPos = stripos($part, ' FROM ');
-				if ($fromPos !== false) {
-					$selects[] = trim(substr($part, 0, $fromPos));
-					break;
-				}
-				$selects[] = $part;
+		if (stripos($querystring, 'SELECT') === 0) {
+			$last = strripos($querystring, 'FROM');
+			if ($last !== false) {
+				$selectpart = substr($querystring, 7, $last - 8);
+				$selects = String::tokenize($selectpart, ',', '(', ')');
 			}
 		} elseif (strpos($querystring, 'PRAGMA table_info') === 0) {
 			$selects = array('cid', 'name', 'type', 'notnull', 'dflt_value', 'pk');
@@ -326,7 +318,7 @@ class Sqlite extends DboSource {
 				$j++;
 				continue;
 			}
-			if (preg_match('/\bAS(?!.*\bAS\b)\s+(.*)/i', $selects[$j], $matches)) {
+			if (preg_match('/\bAS\s+(.*)/i', $selects[$j], $matches)) {
 				$columnName = trim($matches[1], '"');
 			} else {
 				$columnName = trim(str_replace('"', '', $selects[$j]));

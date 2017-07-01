@@ -47,7 +47,7 @@ class MergeVarsAppController extends Controller {
  *
  * @package       Cake.Test.Case.Controller
  */
-class MergeVarComponent extends CakeObject {
+class MergeVarComponent extends Object {
 
 }
 

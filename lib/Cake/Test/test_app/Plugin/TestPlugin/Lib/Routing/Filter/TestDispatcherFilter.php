@@ -17,7 +17,7 @@
 App::uses('DispatcherFilter', 'Routing');
 
 /**
- * TestDispatcherFilter
+ * Class TestDispatcherFilter
  *
  * @package		  Cake.Test.TestApp.Routing.Filter
  */

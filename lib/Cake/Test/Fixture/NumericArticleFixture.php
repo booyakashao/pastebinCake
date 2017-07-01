@@ -17,7 +17,7 @@
  */
 
 /**
- * NumericArticleFixture
+ * Class NumericArticleFixture
  *
  * @package       Cake.Test.Fixture
  */

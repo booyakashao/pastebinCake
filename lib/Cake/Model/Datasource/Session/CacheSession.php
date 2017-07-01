@@ -52,12 +52,7 @@ class CacheSession implements CakeSessionHandlerInterface {
  * @return mixed The value of the key or false if it does not exist
  */
 	public function read($id) {
-		$data = Cache::read($id, Configure::read('Session.handler.config'));
-
-		if (!is_numeric($data) && empty($data)) {
-			return '';
-		}
-		return $data;
+		return Cache::read($id, Configure::read('Session.handler.config'));
 	}
 
 /**
@@ -68,7 +63,7 @@ class CacheSession implements CakeSessionHandlerInterface {
  * @return bool True for successful write, false otherwise.
  */
 	public function write($id, $data) {
-		return (bool)Cache::write($id, $data, Configure::read('Session.handler.config'));
+		return Cache::write($id, $data, Configure::read('Session.handler.config'));
 	}
 
 /**
@@ -78,7 +73,7 @@ class CacheSession implements CakeSessionHandlerInterface {
  * @return bool True for successful delete, false otherwise.
  */
 	public function destroy($id) {
-		return (bool)Cache::delete($id, Configure::read('Session.handler.config'));
+		return Cache::delete($id, Configure::read('Session.handler.config'));
 	}
 
 /**
@@ -88,7 +83,7 @@ class CacheSession implements CakeSessionHandlerInterface {
  * @return bool Success
  */
 	public function gc($expires = null) {
-		return (bool)Cache::gc(Configure::read('Session.handler.config'), $expires);
+		return Cache::gc(Configure::read('Session.handler.config'), $expires);
 	}
 
 }

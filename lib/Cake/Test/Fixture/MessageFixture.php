@@ -17,7 +17,7 @@
  */
 
 /**
- * MessageFixture
+ * Class MessageFixture
  *
  * @package       Cake.Test.Fixture
  */

@@ -37,7 +37,7 @@ class CakeTestSuiteDispatcher {
 		'codeCoverage' => false,
 		'case' => null,
 		'core' => false,
-		'app' => false,
+		'app' => true,
 		'plugin' => null,
 		'output' => 'html',
 		'show' => 'groups',
@@ -151,12 +151,6 @@ class CakeTestSuiteDispatcher {
 			} elseif (is_dir($vendor . DS . 'PHPUnit')) {
 				ini_set('include_path', $vendor . PATH_SEPARATOR . ini_get('include_path'));
 				break;
-			} elseif (is_file($vendor . DS . 'phpunit.phar')) {
-				$backup = $GLOBALS['_SERVER']['SCRIPT_NAME'];
-				$GLOBALS['_SERVER']['SCRIPT_NAME'] = '-';
-				$included = include_once $vendor . DS . 'phpunit.phar';
-				$GLOBALS['_SERVER']['SCRIPT_NAME'] = $backup;
-				return $included;
 			}
 		}
 		include 'PHPUnit' . DS . 'Autoload.php';
@@ -254,7 +248,7 @@ class CakeTestSuiteDispatcher {
 		restore_error_handler();
 
 		try {
-			static::time();
+			self::time();
 			$command = new CakeTestSuiteCommand('CakeTestLoader', $commandArgs);
 			$command->run($options);
 		} catch (MissingConnectionException $exception) {
@@ -287,7 +281,7 @@ class CakeTestSuiteDispatcher {
  * @return string formatted date
  */
 	public static function date($format) {
-		return date($format, static::time());
+		return date($format, self::time());
 	}
 
 }

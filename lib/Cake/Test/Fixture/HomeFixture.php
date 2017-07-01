@@ -17,7 +17,7 @@
  */
 
 /**
- * HomeFixture
+ * Class HomeFixture
  *
  * @package       Cake.Test.Fixture
  */

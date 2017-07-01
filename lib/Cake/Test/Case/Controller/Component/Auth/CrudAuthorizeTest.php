@@ -23,7 +23,7 @@ App::uses('CakeRequest', 'Network');
 App::uses('CakeResponse', 'Network');
 
 /**
- * CrudAuthorizeTest
+ * Class CrudAuthorizeTest
  *
  * @package       Cake.Test.Case.Controller.Component.Auth
  */

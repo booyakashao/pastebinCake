@@ -17,7 +17,7 @@
  */
 
 /**
- * TestsAppsController
+ * Class TestsAppsController
  *
  * @package       Cake.Test.TestApp.Controller
  */
@@ -42,10 +42,6 @@ class TestsAppsController extends AppController {
 	public function set_action() {
 		$this->set('var', 'string');
 		$this->render('index');
-	}
-
-	public function file() {
-		$this->response->file(__FILE__);
 	}
 
 	public function redirect_to() {
