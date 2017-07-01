@@ -102,7 +102,8 @@ class Mysql extends DboSource {
 	public $tableParameters = array(
 		'charset' => array('value' => 'DEFAULT CHARSET', 'quote' => false, 'join' => '=', 'column' => 'charset'),
 		'collate' => array('value' => 'COLLATE', 'quote' => false, 'join' => '=', 'column' => 'Collation'),
-		'engine' => array('value' => 'ENGINE', 'quote' => false, 'join' => '=', 'column' => 'Engine')
+		'engine' => array('value' => 'ENGINE', 'quote' => false, 'join' => '=', 'column' => 'Engine'),
+		'comment' => array('value' => 'COMMENT', 'quote' => true, 'join' => '=', 'column' => 'Comment'),
 	);
 
 /**
@@ -351,8 +352,8 @@ class Mysql extends DboSource {
 			if (in_array($fields[$column->Field]['type'], $this->fieldParameters['unsigned']['types'], true)) {
 				$fields[$column->Field]['unsigned'] = $this->_unsigned($column->Type);
 			}
-			if ($fields[$column->Field]['type'] === 'timestamp' && strtoupper($column->Default) === 'CURRENT_TIMESTAMP') {
-				$fields[$column->Field]['default'] = '';
+			if (in_array($fields[$column->Field]['type'], array('timestamp', 'datetime')) && strtoupper($column->Default) === 'CURRENT_TIMESTAMP') {
+				$fields[$column->Field]['default'] = null;
 			}
 			if (!empty($column->Key) && isset($this->index[$column->Key])) {
 				$fields[$column->Field]['key'] = $this->index[$column->Key];
@@ -436,13 +437,7 @@ class Mysql extends DboSource {
 		if (empty($conditions)) {
 			$alias = $joins = false;
 		}
-		$complexConditions = false;
-		foreach ((array)$conditions as $key => $value) {
-			if (strpos($key, $model->alias) === false) {
-				$complexConditions = true;
-				break;
-			}
-		}
+		$complexConditions = $this->_deleteNeedsComplexConditions($model, $conditions);
 		if (!$complexConditions) {
 			$joins = false;
 		}
@@ -456,6 +451,27 @@ class Mysql extends DboSource {
 			return false;
 		}
 		return true;
+	}
+
+/**
+ * Checks whether complex conditions are needed for a delete with the given conditions.
+ *
+ * @param Model $model The model to delete from.
+ * @param mixed $conditions The conditions to use.
+ * @return bool Whether or not complex conditions are needed
+ */
+	protected function _deleteNeedsComplexConditions(Model $model, $conditions) {
+		$fields = array_keys($this->describe($model));
+		foreach ((array)$conditions as $key => $value) {
+			if (in_array(strtolower(trim($key)), $this->_sqlBoolOps, true)) {
+				if ($this->_deleteNeedsComplexConditions($model, $value)) {
+					return true;
+				}
+			} elseif (strpos($key, $model->alias) === false && !in_array($key, $fields, true)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 /**
@@ -563,7 +579,11 @@ class Mysql extends DboSource {
 								if (!isset($col['name'])) {
 									$col['name'] = $field;
 								}
-								$colList[] = 'CHANGE ' . $this->name($field) . ' ' . $this->buildColumn($col);
+								$alter = 'CHANGE ' . $this->name($field) . ' ' . $this->buildColumn($col);
+								if (isset($col['after'])) {
+									$alter .= ' AFTER ' . $this->name($col['after']);
+								}
+								$colList[] = $alter;
 							}
 							break;
 					}
